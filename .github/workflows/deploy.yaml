@@ -17,8 +17,8 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
-      - run: mv ./functions ./functions-disable
-        # if: ${{ github.ref_name == 'main' }}
+      # - run: mv ./functions ./functions-disable
+      #   if: ${{ github.ref_name == 'main' }}
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
