@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+import DescriptionSection from "../../components/DescriptionSection.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ServiceSection from "../../components/ServiceSection.astro";
+import { LANGS } from "../../libs/lang";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+---
+
+<BaseLayout lang={lang}>
+  <HeroSection />
+  <main>
+    <ServiceSection lang={lang} />
+    <DescriptionSection lang={lang} />
+  </main>
+</BaseLayout>

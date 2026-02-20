@@ -1,0 +1,63 @@
+---
+import { DEFAULT_LANG, getDictionary, LANGS, type Lang } from "../libs/lang";
+import "@fontsource-variable/outfit";
+import "@fontsource-variable/noto-sans-jp";
+import "../styles/global.css";
+import { Image } from "astro:assets";
+import Header from "./Header.astro";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const dictionary = getDictionary(lang);
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta content={Astro.generator} name="generator" />
+
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <link href={Astro.url.origin} rel="canonical" />
+    <link
+      href={`${Astro.url.origin}`}
+      hreflang={DEFAULT_LANG}
+      rel="alternate"
+    />
+    {
+      LANGS.filter((l) => l !== DEFAULT_LANG).map((l) => (
+        <link href={`${Astro.url.origin}/${l}`} hreflang={l} rel="alternate" />
+      ))
+    }
+    <link href={Astro.url.origin} hreflang="x-default" rel="alternate" />
+
+    <title>{dictionary.cloudensis}</title>
+    <meta content={dictionary.cloudensis} name="og:title" />
+    <meta content={dictionary.cloudensis} name="og:site_name" />
+    <meta content={dictionary.cloudensis} name="twitter:title" />
+    <meta content={dictionary.siteDescription} name="description" />
+    <meta content={dictionary.siteDescription} name="og:description" />
+    <meta content={dictionary.siteDescription} name="twitter:description" />
+    <meta content={`${Astro.url.origin}/ogp.png`} name="og:image" />
+    <meta content={`${Astro.url.origin}/ogp.png`} name="twitter:image" />
+    <meta content={Astro.url.origin} name="og:url" />
+    <meta content="website" name="og:type" />
+    <meta content="summary_large_image" name="twitter:card" />
+
+    <link href="/sitemap-index.xml" rel="sitemap" />
+  </head>
+
+  <body>
+    <Header />
+
+    <slot />
+
+    <footer>&copy; 2026 {dictionary.cloudensis} llc</footer>
+  </body>
+</html>

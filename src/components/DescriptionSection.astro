@@ -1,0 +1,39 @@
+---
+import { getDictionary, type Lang } from "../libs/lang";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const dictionary = getDictionary(lang);
+---
+
+<section id="overview">
+  <h2>Overview</h2>
+  <dl>
+    <dt>{dictionary.companyName}</dt>
+    <dd>{dictionary.companyNameValue}</dd>
+    <dt>{dictionary.Founded}</dt>
+    <dd>{dictionary.FoundedValue}</dd>
+    <dt>{dictionary.location}</dt>
+    <dd>{dictionary.locationValue}</dd>
+    <dt>{dictionary.representative}</dt>
+    <dd>{dictionary.representativeValue}</dd>
+    <dt>{dictionary.capital}</dt>
+    <dd>{dictionary.capitalValue}</dd>
+  </dl>
+</section>
+
+<style>
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 16px 32px;
+  }
+
+  dt,
+  dd {
+    margin: 0;
+  }
+</style>

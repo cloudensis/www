@@ -1,0 +1,30 @@
+{
+  "en": {
+    "cloudensis": "cloudensis",
+    "siteDescription": "cloudensis",
+    "companyName": "Company Name",
+    "companyNameValue": "Cloudensis llc",
+    "Founded": "Founded",
+    "FoundedValue": "April 1, 2026",
+    "location": "Location",
+    "locationValue": "Sendai, Miyagi, Japan",
+    "representative": "Representative",
+    "representativeValue": "Kanaru Sasaki",
+    "capital": "Capital",
+    "capitalValue": "1,000,000 JPY"
+  },
+  "ja": {
+    "cloudensis": "cloudensis",
+    "siteDescription": "cloudensis",
+    "companyName": "会社名",
+    "companyNameValue": "Cloudensis合同会社",
+    "Founded": "設立",
+    "FoundedValue": "2026年4月1日",
+    "location": "所在地",
+    "locationValue": "宮城県仙台市青葉区",
+    "representative": "代表社員",
+    "representativeValue": "佐々木哉瑠",
+    "capital": "資本金",
+    "capitalValue": "1,000,000円"
+  }
+}

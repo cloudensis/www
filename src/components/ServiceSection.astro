@@ -1,0 +1,36 @@
+---
+import { getDictionary, type Lang } from "../libs/lang";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const dictionary = getDictionary(lang);
+---
+
+<section id="service">
+  <h2>Service</h2>
+  <ul>
+    <li>ソフトウェアの企画・設計・開発・運用</li>
+    <li>技術コンサルティング・技術顧問</li>
+    <li>IT教育</li>
+  </ul>
+</section>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 16px;
+  }
+
+  li {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+</style>

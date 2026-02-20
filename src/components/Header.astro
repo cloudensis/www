@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header>
+  <h1>
+    <Image src="/favicon.svg" alt="icon" width={25} height={18} />
+    cloudensis
+  </h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="#service">service</a>
+      </li>
+      <li>
+        <a href="#overview">overview</a>
+      </li>
+      <li>
+        <a href="#contact">contact</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 16px;
+    backdrop-filter: blur(16px);
+  }
+
+  h1 {
+    font:
+      100 24px/1 "Outfit Variable",
+      sans-serif;
+    letter-spacing: 0.1rem;
+    margin: 0;
+  }
+
+  img {
+    transform: translateY(2px);
+  }
+
+  ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font:
+      100 18px/1 "Outfit Variable",
+      sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+  }
+</style>

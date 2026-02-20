@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import DescriptionSection from "../components/DescriptionSection.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServiceSection from "../components/ServiceSection.astro";
+import { DEFAULT_LANG } from "../libs/lang";
+---
+
+<BaseLayout lang={DEFAULT_LANG}>
+  <HeroSection />
+  <main>
+    <ServiceSection lang={DEFAULT_LANG} />
+    <DescriptionSection lang={DEFAULT_LANG} />
+  </main>
+</BaseLayout>
