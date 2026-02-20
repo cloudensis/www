@@ -1,8 +1,6 @@
-export async function onRequest({ request, next }) {
-  const BASIC_USER = process.env.BASIC_USER;
-  const BASIC_PASS = process.env.BASIC_PASS;
+export async function onRequest({ request, next, env }) {
   const authHeader = request.headers.get("Authorization");
-  const credentials = btoa(`${BASIC_USER}:${BASIC_PASS}`);
+  const credentials = btoa(`${env.BASIC_USER}:${env.BASIC_PASS}`);
   const expectedAuthHeader = `Basic ${credentials}`;
 
   if (authHeader !== expectedAuthHeader) {
