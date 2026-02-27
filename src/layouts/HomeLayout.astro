@@ -1,0 +1,21 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import OverviewSection from "../components/OverviewSection.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServiceSection from "../components/ServiceSection.astro";
+import type { Lang } from "../libs/lang";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang}>
+  <HeroSection />
+  <main>
+    <ServiceSection lang={lang} />
+    <OverviewSection lang={lang} />
+  </main>
+</BaseLayout>

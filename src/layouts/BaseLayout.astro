@@ -3,8 +3,8 @@ import { DEFAULT_LANG, getDictionary, LANGS, type Lang } from "../libs/lang";
 import "@fontsource-variable/outfit";
 import "@fontsource-variable/noto-sans-jp";
 import "../styles/global.css";
-import { Image } from "astro:assets";
-import Header from "./Header.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 type Props = {
   lang: Lang;
@@ -58,6 +58,6 @@ const dictionary = getDictionary(lang);
 
     <slot />
 
-    <footer>&copy; 2026 {dictionary.cloudensis} llc</footer>
+    <Footer />
   </body>
 </html>
