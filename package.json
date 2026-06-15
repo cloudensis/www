@@ -2,8 +2,7 @@
 	"name": "www",
 	"type": "module",
 	"scripts": {
-		"dev:fe": "vite",
-		"dev:be": "wrangler dev",
+		"dev": "wrangler dev",
 		"build": "vite build",
 		"deploy": "wrangler deploy --minify",
 		"cf-typegen": "wrangler types --env-interface CloudflareBindings",
@@ -15,13 +14,15 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.0",
-		"@hono/vite-dev-server": "^0.26.0",
 		"@hono/vite-ssg": "^0.3.3",
+		"@tailwindcss/vite": "^4.3.0",
+		"tailwindcss": "^4.3.0",
 		"vite": "^8.0.16",
 		"wrangler": "^4.100.0"
 	},
 	"overrides": {
-		"esbuild": "^0.28.1"
+		"esbuild": "^0.28.1",
+		"ws": "^8.21.0"
 	},
 	"imports": {
 		"#/*": [

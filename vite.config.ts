@@ -1,27 +1,20 @@
-import devServer from "@hono/vite-dev-server";
 import ssg from "@hono/vite-ssg";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
 	plugins: [
-		command === "serve"
-			? devServer({
-					entry: "./src/frontend/index.tsx",
-				})
-			: ssg({
-					entry: "./src/frontend/index.tsx",
-				}),
-		// サーバーサイドコード (.ts, .tsx) の変更時にブラウザを自動でフルリロードさせる
-		command === "serve"
-			? {
-					name: "hono-html-reload",
-					handleHotUpdate({ file, server }) {
-						if (file.endsWith(".ts") || file.endsWith(".tsx")) {
-							server.ws.send({ type: "full-reload" });
-							return [];
-						}
-					},
-				}
-			: [],
+		tailwindcss(),
+		ssg({
+			entry: "./src/frontend/index.tsx",
+		}),
 	],
+	build: {
+		rolldownOptions: {
+			input: ["./src/frontend/style.css"],
+			output: {
+				assetFileNames: "src/frontend/style.css",
+			},
+		},
+	},
 }));
