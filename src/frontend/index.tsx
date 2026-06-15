@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { Home } from "./components/templates/Home";
+import { Home } from "./components/templates/home";
 import { Layout } from "./components/templates/layout";
 
 const app = new Hono();
