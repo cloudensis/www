@@ -3,7 +3,6 @@
 ## ローカル起動
 
 ```
-npm run build -- -w
 npm run dev
 ```
 
