@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 
-export const app = new Hono();
+const app = new Hono();
 
 app.get("/", (c) => {
 	return c.html(
@@ -16,3 +16,5 @@ app.get("/", (c) => {
 		</html>,
 	);
 });
+
+export default app;
