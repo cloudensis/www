@@ -2,7 +2,9 @@
 	"name": "www",
 	"type": "module",
 	"scripts": {
-		"dev": "wrangler dev",
+		"dev:fe": "tsx watch src/frontend/build.ts",
+		"dev:be": "wrangler dev",
+		"build:fe": "tsx src/build.ts",
 		"deploy": "wrangler deploy --minify",
 		"cf-typegen": "wrangler types --env-interface CloudflareBindings",
 		"lint": "biome check",
@@ -17,5 +19,12 @@
 	},
 	"overrides": {
 		"esbuild": "^0.28.1"
+	},
+	"imports": {
+		"#/*": [
+			"./src/*.ts",
+			"./src/*.tsx",
+			"./src/*"
+		]
 	}
 }

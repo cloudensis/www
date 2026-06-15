@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "www",
-	"main": "src/index.ts",
+	"main": "src/backend/index.ts",
 	"compatibility_date": "2026-06-15"
 }
