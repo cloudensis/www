@@ -18,5 +18,10 @@
 			"!.wrangler",
 			"!worker-configuration.d.ts"
 		]
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
 	}
 }

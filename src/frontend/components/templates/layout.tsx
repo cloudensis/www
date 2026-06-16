@@ -10,6 +10,7 @@ export function Layout({ children }: LayoutProps) {
 			<head>
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<link rel="icon" href="/logo.svg" />
 				<link rel="stylesheet" href="/src/frontend/style.css" />
 				<title>cloudensis</title>
 			</head>
