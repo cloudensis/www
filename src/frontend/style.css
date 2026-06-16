@@ -26,6 +26,10 @@
 	--font-cloudensis-text:
 		-cloudensis-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
 
+	--breakpoint-cloudensis-small-phone: 419px;
+	--breakpoint-cloudensis-tablet: 833px;
+	--breakpoint-cloudensis-desktop: 1068px;
+
 	--spacing-cloudensis-xxs: 4px;
 	--spacing-cloudensis-xs: 8px;
 	--spacing-cloudensis-sm: 12px;
@@ -78,4 +82,5 @@
 	--tracking-cloudensis-caption: -0.224px;
 	--tracking-cloudensis-fine-print: -0.12px;
 	--tracking-cloudensis-micro-legal: -0.08px;
+	--tracking-cloudensis-display-lg-nudge: -0.01em;
 }

@@ -14,13 +14,13 @@ export function Home() {
 							height="24"
 							class="text-white stroke-white"
 						/>
-						<span class="font-cloudensis-display font-medium text-[13px] tracking-wide">
+						<span class="font-cloudensis-display font-medium text-xs tracking-wide">
 							cloudensis
 						</span>
 					</a>
 
 					{/* Desktop Menu links */}
-					<div class="max-[833px]:hidden! flex items-center space-x-8 text-cloudensis-fine-print tracking-tight text-cloudensis-body-muted">
+					<div class="max-cloudensis-tablet:hidden! flex items-center space-x-8 text-cloudensis-fine-print tracking-tight text-cloudensis-body-muted">
 						<a href="#about" class="hover:text-white transition-colors">
 							Company
 						</a>
@@ -36,14 +36,14 @@ export function Home() {
 					<div class="flex items-center space-x-6 text-cloudensis-fine-print text-cloudensis-body-muted">
 						<a
 							href="#contact"
-							class="bg-cloudensis-body hover:bg-cloudensis-ink-muted-80 text-white rounded-cloudensis-sm px-3 py-1 font-normal text-[11px] border border-cloudensis-ink-muted-80 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-95"
+							class="bg-cloudensis-body hover:bg-cloudensis-ink-muted-80 text-white rounded-cloudensis-sm px-3 py-1 font-normal text-xs border border-cloudensis-ink-muted-80 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-95"
 						>
 							Inquire
 						</a>
 						{/* Mobile Hamburger toggle */}
 						<a
 							href="#mobile-nav-overlay"
-							class="hidden max-[833px]:block! text-white"
+							class="hidden max-cloudensis-tablet:block! text-white"
 						>
 							<svg
 								class="w-5 h-5 fill-current"
@@ -113,12 +113,12 @@ export function Home() {
 				</div>
 			</div>
 
-			<section class="bg-white text-body pt-[100px] pb-cloudensis-section px-6 select-none flex flex-col items-center text-center">
-				<div class="max-w-[800px] w-full">
-					<h1 class="font-cloudensis-display text-cloudensis-hero-display font-semibold leading-cloudensis-hero-display tracking-cloudensis-hero-display max-[1068px]:text-[48px] max-[640px]:text-[38px] max-[419px]:text-cloudensis-lead text-body">
+			<section class="bg-white text-body pt-24 pb-cloudensis-section px-6 select-none flex flex-col items-center text-center">
+				<div class="max-w-3xl w-full">
+					<h1 class="font-cloudensis-display text-cloudensis-hero-display font-semibold leading-cloudensis-hero-display tracking-cloudensis-hero-display max-cloudensis-desktop:text-5xl max-sm:text-4xl max-cloudensis-small-phone:text-cloudensis-lead text-body">
 						Engineering the Future of Global Infrastructure.
 					</h1>
-					<p class="text-cloudensis-lead font-normal leading-cloudensis-lead tracking-cloudensis-lead max-[1068px]:text-cloudensis-lead-airy max-[640px]:text-[20px] text-[#86868b] mt-4">
+					<p class="text-cloudensis-lead font-normal leading-cloudensis-lead tracking-cloudensis-lead max-cloudensis-desktop:text-cloudensis-lead-airy max-sm:text-xl text-neutral-500 mt-4">
 						High-performance compute, intelligence, and networks built for
 						next-generation enterprises.
 					</p>
@@ -147,18 +147,18 @@ export function Home() {
 				id="about"
 				class="bg-cloudensis-canvas-parchment py-20 px-6 border-t border-cloudensis-hairline select-none"
 			>
-				<div class="max-w-[800px] mx-auto text-center">
-					<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-[-0.01em] max-[1068px]:text-cloudensis-display-md max-[640px]:text-cloudensis-lead text-body mb-6">
+				<div class="max-w-3xl mx-auto text-center">
+					<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-cloudensis-display-lg-nudge max-cloudensis-desktop:text-cloudensis-display-md max-sm:text-cloudensis-lead text-body mb-6">
 						Company Profile
 					</h2>
-					<p class="text-[19px] leading-normal text-cloudensis-ink-muted-48 max-w-[640px] mx-auto mb-12">
+					<p class="text-lg leading-normal text-cloudensis-ink-muted-48 max-w-2xl mx-auto mb-12">
 						Cloudensis Inc. constructs global systems that eliminate
 						orchestrating infrastructure layers, powering runtime networks with
 						low latency and developer autonomy.
 					</p>
 					<div class="grid grid-cols-3 gap-6 pt-4 border-t border-cloudensis-hairline">
 						<div>
-							<div class="text-[32px] font-bold text-cloudensis-primary font-cloudensis-display">
+							<div class="text-3xl font-bold text-cloudensis-primary font-cloudensis-display">
 								12ms
 							</div>
 							<div class="text-cloudensis-fine-print text-cloudensis-ink-muted-48 uppercase tracking-wider mt-1">
@@ -166,7 +166,7 @@ export function Home() {
 							</div>
 						</div>
 						<div>
-							<div class="text-[32px] font-bold text-cloudensis-primary font-cloudensis-display">
+							<div class="text-3xl font-bold text-cloudensis-primary font-cloudensis-display">
 								99.99%
 							</div>
 							<div class="text-cloudensis-fine-print text-cloudensis-ink-muted-48 uppercase tracking-wider mt-1">
@@ -174,7 +174,7 @@ export function Home() {
 							</div>
 						</div>
 						<div>
-							<div class="text-[32px] font-bold text-cloudensis-primary font-cloudensis-display">
+							<div class="text-3xl font-bold text-cloudensis-primary font-cloudensis-display">
 								250+
 							</div>
 							<div class="text-cloudensis-fine-print text-cloudensis-ink-muted-48 uppercase tracking-wider mt-1">
@@ -192,10 +192,10 @@ export function Home() {
 			>
 				<div class="max-w-5xl mx-auto">
 					<div class="text-center mb-16">
-						<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-[-0.01em] max-[1068px]:text-cloudensis-display-md max-[640px]:text-cloudensis-lead text-body">
+						<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-cloudensis-display-lg-nudge max-cloudensis-desktop:text-cloudensis-display-md max-sm:text-cloudensis-lead text-body">
 							Our Services
 						</h2>
-						<p class="text-[20px] font-normal leading-[1.4] text-cloudensis-ink-muted-48 mt-2">
+						<p class="text-xl font-normal leading-relaxed text-cloudensis-ink-muted-48 mt-2">
 							High-efficiency products built for modern applications.
 						</p>
 					</div>
@@ -204,10 +204,10 @@ export function Home() {
 						{/* Service 1: Compute */}
 						<div class="bg-cloudensis-canvas-parchment rounded-cloudensis-lg p-8 border border-cloudensis-hairline flex flex-col justify-between h-full hover:shadow-md transition-shadow duration-300">
 							<div>
-								<div class="text-[11px] uppercase tracking-[0.2em] text-cloudensis-primary font-semibold mb-4">
+								<div class="text-xs uppercase tracking-widest text-cloudensis-primary font-semibold mb-4">
 									Service Area 01
 								</div>
-								<h3 class="font-cloudensis-display text-[22px] font-semibold text-body mb-3">
+								<h3 class="font-cloudensis-display text-2xl font-semibold text-body mb-3">
 									Edge Serverless Compute
 								</h3>
 								<p class="text-cloudensis-caption leading-normal text-cloudensis-ink-muted-48">
@@ -220,10 +220,10 @@ export function Home() {
 						{/* Service 2: Network */}
 						<div class="bg-cloudensis-canvas-parchment rounded-cloudensis-lg p-8 border border-cloudensis-hairline flex flex-col justify-between h-full hover:shadow-md transition-shadow duration-300">
 							<div>
-								<div class="text-[11px] uppercase tracking-[0.2em] text-cloudensis-primary font-semibold mb-4">
+								<div class="text-xs uppercase tracking-widest text-cloudensis-primary font-semibold mb-4">
 									Service Area 02
 								</div>
-								<h3 class="font-cloudensis-display text-[22px] font-semibold text-body mb-3">
+								<h3 class="font-cloudensis-display text-2xl font-semibold text-body mb-3">
 									Intelligent Smart Route
 								</h3>
 								<p class="text-cloudensis-caption leading-normal text-cloudensis-ink-muted-48">
@@ -236,10 +236,10 @@ export function Home() {
 						{/* Service 3: AI Inference */}
 						<div class="bg-cloudensis-canvas-parchment rounded-cloudensis-lg p-8 border border-cloudensis-hairline flex flex-col justify-between h-full hover:shadow-md transition-shadow duration-300">
 							<div>
-								<div class="text-[11px] uppercase tracking-[0.2em] text-cloudensis-primary font-semibold mb-4">
+								<div class="text-xs uppercase tracking-widest text-cloudensis-primary font-semibold mb-4">
 									Service Area 03
 								</div>
-								<h3 class="font-cloudensis-display text-[22px] font-semibold text-body mb-3">
+								<h3 class="font-cloudensis-display text-2xl font-semibold text-body mb-3">
 									Edge GPU AI Acceleration
 								</h3>
 								<p class="text-cloudensis-caption leading-normal text-cloudensis-ink-muted-48">
@@ -257,9 +257,9 @@ export function Home() {
 				id="contact"
 				class="bg-cloudensis-canvas-parchment py-20 px-6 border-t border-cloudensis-hairline select-none"
 			>
-				<div class="max-w-[600px] mx-auto">
+				<div class="max-w-2xl mx-auto">
 					<div class="text-center mb-12">
-						<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-[-0.01em] max-[1068px]:text-cloudensis-display-md max-[640px]:text-cloudensis-lead text-body">
+						<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-cloudensis-display-lg-nudge max-cloudensis-desktop:text-cloudensis-display-md max-sm:text-cloudensis-lead text-body">
 							Contact Us
 						</h2>
 						<p class="text-cloudensis-ink-muted-48 mt-2">
@@ -271,7 +271,7 @@ export function Home() {
 						</p>
 					</div>
 
-					<form class="bg-white rounded-cloudensis-lg border border-cloudensis-hairline p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] space-y-6">
+					<form class="bg-white rounded-cloudensis-lg border border-cloudensis-hairline p-8 shadow-md space-y-6">
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							<div class="space-y-2">
 								<label
@@ -323,7 +323,7 @@ export function Home() {
 
 						<button
 							type="submit"
-							class="w-full bg-cloudensis-primary hover:bg-cloudensis-primary-focus text-white py-3 rounded-cloudensis-sm font-medium text-[15px] transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-98"
+							class="w-full bg-cloudensis-primary hover:bg-cloudensis-primary-focus text-white py-3 rounded-cloudensis-sm font-medium text-sm transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-98"
 						>
 							Send Message
 						</button>
