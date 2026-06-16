@@ -106,7 +106,7 @@ export function Home() {
 				<div class="pb-10">
 					<a
 						href="#contact"
-						class="block w-full text-center bg-cloudensis-primary hover:bg-cloudensis-primary-focus text-white py-3 rounded-full font-medium text-cloudensis-body"
+						class="block w-full text-center bg-cloudensis-primary hover:bg-cloudensis-primary-focus text-white py-3 rounded-full font-medium"
 					>
 						Contact Us
 					</a>
@@ -125,13 +125,13 @@ export function Home() {
 					<div class="flex justify-center space-x-6 mt-8">
 						<a
 							href="#services"
-							class="bg-cloudensis-primary hover:bg-cloudensis-primary-focus text-white px-6 py-2.5 rounded-full font-normal text-cloudensis-body transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-95 tracking-wide"
+							class="bg-cloudensis-primary hover:bg-cloudensis-primary-focus px-6 py-2.5 rounded-full font-normal text-white transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-95 tracking-wide"
 						>
 							Our Services
 						</a>
 						<a
 							href="#contact"
-							class="text-cloudensis-primary hover:underline flex items-center space-x-1 font-normal text-cloudensis-body group"
+							class="text-cloudensis-primary hover:underline flex items-center space-x-1 font-normal group"
 						>
 							<span>Get in Touch</span>
 							<span class="group-hover:translate-x-1 transition-transform inline-block">
@@ -262,11 +262,11 @@ export function Home() {
 						<h2 class="font-cloudensis-display text-cloudensis-display-lg font-semibold leading-cloudensis-display-lg tracking-[-0.01em] max-[1068px]:text-cloudensis-display-md max-[640px]:text-cloudensis-lead text-body">
 							Contact Us
 						</h2>
-						<p class="text-cloudensis-body text-cloudensis-ink-muted-48 mt-2">
+						<p class="text-cloudensis-ink-muted-48 mt-2">
 							Let's build something exceptional together. Reach out at{" "}
 							<span class="text-cloudensis-primary">
 								support@cloudensis.com
-							</span>{" "}
+							</span>
 							or send a message below.
 						</p>
 					</div>
