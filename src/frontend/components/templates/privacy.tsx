@@ -2,7 +2,7 @@ export function Privacy() {
 	return (
 		<div class="font-cloudensis-mono bg-cloudensis-canvas text-cloudensis-ink min-h-screen overflow-x-hidden antialiased">
 			<nav class="bg-cloudensis-canvas text-cloudensis-ink h-cloudensis-global-nav border-b border-cloudensis-hairline sticky top-0 z-50 font-cloudensis-mono">
-				<div class="max-w-[960px] mx-auto h-full px-6 flex items-center justify-between">
+				<div class="max-w-240 mx-auto h-full px-6 flex items-center justify-between">
 					<a
 						href="/"
 						class="flex items-center space-x-2 font-bold text-cloudensis-caption-md tracking-wide uppercase hover:opacity-70 transition-opacity"
@@ -14,7 +14,7 @@ export function Privacy() {
 						href="/"
 						class="text-cloudensis-caption-md text-cloudensis-mute hover:text-cloudensis-ink transition-colors"
 					>
-						&larr; トップへ戻る
+						&larr; Home
 					</a>
 				</div>
 			</nav>
@@ -95,7 +95,7 @@ export function Privacy() {
 			</section>
 
 			<footer class="bg-cloudensis-canvas border-t border-cloudensis-hairline py-8 px-6 text-cloudensis-caption-md text-cloudensis-mute">
-				<div class="max-w-[960px] mx-auto">
+				<div class="max-w-240 mx-auto">
 					Copyright &copy; 2026 Cloudensis合同会社
 				</div>
 			</footer>

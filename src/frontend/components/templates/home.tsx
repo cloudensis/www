@@ -44,44 +44,39 @@ export function Home() {
 	return (
 		<div class="font-cloudensis-mono bg-cloudensis-canvas text-cloudensis-ink min-h-screen overflow-x-hidden antialiased">
 			<nav class="bg-cloudensis-canvas text-cloudensis-ink h-cloudensis-global-nav border-b border-cloudensis-hairline sticky top-0 z-50 font-cloudensis-mono">
-				<div class="max-w-[960px] mx-auto h-full px-6 flex items-center justify-between">
+				<div class="max-w-240 mx-auto h-full px-6 flex items-center justify-between">
 					<a
 						href="/"
-						class="flex items-center space-x-2 font-bold text-cloudensis-caption-md tracking-wide uppercase hover:opacity-70 transition-opacity"
+						class="flex items-center space-x-2 font-bold text-cloudensis-caption-md tracking-wide hover:opacity-70 transition-opacity"
 					>
 						<img src="/logo.svg" alt="" width="20" height="14" />
-						<span>Cloudensis合同会社</span>
+						<span>cloudensis</span>
 					</a>
 
 					{/* Desktop Menu links */}
-					<div class="max-cloudensis-tablet:hidden! flex items-center space-x-8 text-cloudensis-caption-md text-cloudensis-mute">
-						<a
-							href="#about"
-							class="hover:text-cloudensis-ink transition-colors"
-						>
-							[01] 会社概要
-						</a>
-						<a
-							href="#services"
-							class="hover:text-cloudensis-ink transition-colors"
-						>
-							[02] 事業内容
-						</a>
-						<a
-							href="#contact"
-							class="hover:text-cloudensis-ink transition-colors"
-						>
-							[03] お問い合わせ
-						</a>
-					</div>
 
 					{/* Utility Right Menu */}
-					<div class="flex items-center space-x-4">
+					<div class="flex items-center space-x-8">
+						<div class="max-cloudensis-tablet:hidden! flex items-center space-x-4 text-cloudensis-caption-md text-cloudensis-mute">
+							<a
+								href="#about"
+								class="hover:text-cloudensis-ink transition-colors"
+							>
+								[01] About
+							</a>
+							<a
+								href="#services"
+								class="hover:text-cloudensis-ink transition-colors"
+							>
+								[02] Services
+							</a>
+						</div>
+
 						<a
 							href="#contact"
 							class="bg-cloudensis-ink hover:bg-cloudensis-ink-deep text-cloudensis-on-dark rounded-cloudensis-sm px-5 py-1 text-cloudensis-caption-md leading-cloudensis-button-md transition-[transform,background-color] duration-200 active:scale-95"
 						>
-							お問い合わせ
+							Contact
 						</a>
 						{/* Mobile Hamburger toggle */}
 						<a
@@ -124,13 +119,10 @@ export function Home() {
 					</div>
 					<div class="flex flex-col space-y-6 pt-8 text-cloudensis-heading-md text-cloudensis-ink">
 						<a href="#about" onclick="window.location.hash=''">
-							[01] 会社概要
+							[01] About
 						</a>
 						<a href="#services" onclick="window.location.hash=''">
-							[02] 事業内容
-						</a>
-						<a href="#contact" onclick="window.location.hash=''">
-							[03] お問い合わせ
+							[02] Services
 						</a>
 					</div>
 				</div>
@@ -139,14 +131,14 @@ export function Home() {
 						href="#contact"
 						class="block w-full text-center bg-cloudensis-ink text-cloudensis-on-dark py-3 rounded-cloudensis-sm"
 					>
-						お問い合わせ
+						Contact
 					</a>
 				</div>
 			</div>
 
 			{/* Hero */}
 			<section class="bg-cloudensis-canvas pt-24 pb-cloudensis-section px-6">
-				<div class="max-w-[960px] mx-auto">
+				<div class="max-w-240 mx-auto">
 					<div class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-widest mb-4">
 						[ Sendai, Japan ]
 					</div>
@@ -161,13 +153,13 @@ export function Home() {
 							href="#services"
 							class="bg-cloudensis-ink hover:bg-cloudensis-ink-deep text-cloudensis-on-dark px-5 py-1 rounded-cloudensis-sm text-cloudensis-caption-md leading-cloudensis-button-md transition-[transform,background-color] duration-200 active:scale-95"
 						>
-							事業内容を見る
+							View Services
 						</a>
 						<a
 							href="#contact"
 							class="text-cloudensis-ink underline hover:opacity-70 transition-opacity"
 						>
-							お問い合わせ &rarr;
+							Contact &rarr;
 						</a>
 					</div>
 
@@ -178,16 +170,16 @@ export function Home() {
 						</div>
 						<div class="space-y-3 text-cloudensis-body-md leading-cloudensis-body-md">
 							<div>
-								<span class="text-cloudensis-ash">[+]</span> Go ——
-								バックエンド・API開発
+								<span class="text-cloudensis-ash">[+]</span> Go — Backend &amp;
+								API
 							</div>
 							<div>
 								<span class="text-cloudensis-ash">[+]</span> TypeScript /
-								Next.js —— アプリケーション・フロントエンド
+								Next.js — Application &amp; Frontend
 							</div>
 							<div>
 								<span class="text-cloudensis-ash">[+]</span> Google Cloud / AWS
-								/ Cloudflare —— クラウドインフラ
+								/ Cloudflare — Infrastructure
 							</div>
 						</div>
 					</div>
@@ -199,9 +191,9 @@ export function Home() {
 				id="about"
 				class="bg-cloudensis-canvas py-cloudensis-section px-6 border-t border-cloudensis-hairline"
 			>
-				<div class="max-w-[960px] mx-auto">
+				<div class="max-w-240 mx-auto">
 					<h2 class="text-cloudensis-heading-md font-bold uppercase tracking-wide text-cloudensis-ink pb-4 border-b border-cloudensis-hairline mb-8">
-						[01] 会社概要
+						[01] About
 					</h2>
 					<p class="text-cloudensis-body-md leading-cloudensis-body-md text-cloudensis-body max-w-2xl mb-12">
 						Cloudensis合同会社は、目先の効率だけでなく、コードの一行ひとつひとつに責任を持つことを大切にしています。Web標準とクラウドネイティブなアーキテクチャに対する深い理解を土台に、保守性と拡張性を兼ね備えたシステムを設計し、お客様の事業が長く成長し続けるための技術基盤を提供します。
@@ -209,7 +201,7 @@ export function Home() {
 					<dl class="border-t border-cloudensis-hairline divide-y divide-cloudensis-hairline">
 						<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-4">
 							<dt class="sm:w-28 shrink-0 text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide">
-								設立
+								Founded
 							</dt>
 							<dd class="text-cloudensis-body-md text-cloudensis-ink">
 								2026年4月1日
@@ -217,7 +209,7 @@ export function Home() {
 						</div>
 						<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-4">
 							<dt class="sm:w-28 shrink-0 text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide">
-								所在地
+								Address
 							</dt>
 							<dd class="text-cloudensis-body-md text-cloudensis-ink">
 								〒980-0021
@@ -227,7 +219,7 @@ export function Home() {
 						</div>
 						<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-4">
 							<dt class="sm:w-28 shrink-0 text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide">
-								資本金
+								Capital
 							</dt>
 							<dd class="text-cloudensis-body-md text-cloudensis-ink">
 								1,000,000円
@@ -242,9 +234,9 @@ export function Home() {
 				id="services"
 				class="bg-cloudensis-canvas py-cloudensis-section px-6 border-t border-cloudensis-hairline"
 			>
-				<div class="max-w-[960px] mx-auto">
+				<div class="max-w-240 mx-auto">
 					<h2 class="text-cloudensis-heading-md font-bold uppercase tracking-wide text-cloudensis-ink pb-4 border-b border-cloudensis-hairline mb-8">
-						[02] 事業内容
+						[02] Services
 					</h2>
 
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-cloudensis-hairline border border-cloudensis-hairline">
@@ -300,7 +292,7 @@ export function Home() {
 			>
 				<div class="max-w-[640px] mx-auto">
 					<h2 class="text-cloudensis-heading-md font-bold uppercase tracking-wide text-cloudensis-ink pb-4 border-b border-cloudensis-hairline mb-8">
-						[03] お問い合わせ
+						[03] Contact
 					</h2>
 					<p class="text-cloudensis-body-md text-cloudensis-body mb-8">
 						ご依頼やご相談がございましたら、下記フォームよりお気軽にお問い合わせください。
@@ -313,7 +305,7 @@ export function Home() {
 									class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide block"
 									htmlFor="name"
 								>
-									名前
+									Name
 								</label>
 								<input
 									id="name"
@@ -329,7 +321,7 @@ export function Home() {
 									class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide block"
 									htmlFor="company"
 								>
-									会社名
+									Company
 								</label>
 								<input
 									id="company"
@@ -348,7 +340,7 @@ export function Home() {
 									class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide block"
 									htmlFor="email"
 								>
-									メールアドレス
+									Email
 								</label>
 								<input
 									id="email"
@@ -364,7 +356,7 @@ export function Home() {
 									class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide block"
 									htmlFor="inquiryType"
 								>
-									お問い合わせ種別
+									Inquiry Type
 								</label>
 								<select
 									id="inquiryType"
@@ -390,7 +382,7 @@ export function Home() {
 								class="text-cloudensis-caption-md text-cloudensis-mute uppercase tracking-wide block"
 								htmlFor="message"
 							>
-								メッセージ
+								Message
 							</label>
 							<textarea
 								id="message"
@@ -415,7 +407,7 @@ export function Home() {
 								class="text-cloudensis-caption-md text-cloudensis-mute"
 							>
 								<a href="/privacy" class="text-cloudensis-ink underline">
-									プライバシーポリシー
+									Privacy Policy
 								</a>
 								に同意する
 							</label>
@@ -425,7 +417,7 @@ export function Home() {
 							type="submit"
 							class="w-full bg-cloudensis-ink hover:bg-cloudensis-ink-deep text-cloudensis-on-dark py-3 rounded-cloudensis-sm text-cloudensis-caption-md leading-cloudensis-button-md transition-[transform,background-color] duration-200 active:scale-98 disabled:opacity-50"
 						>
-							送信する
+							Send
 						</button>
 
 						<div
@@ -437,13 +429,13 @@ export function Home() {
 			</section>
 
 			<footer class="bg-cloudensis-canvas border-t border-cloudensis-hairline py-8 px-6 text-cloudensis-caption-md text-cloudensis-mute">
-				<div class="max-w-[960px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+				<div class="max-w-240 mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
 					<span>Copyright &copy; 2026 Cloudensis合同会社</span>
 					<a
 						href="/privacy"
 						class="hover:text-cloudensis-ink transition-colors"
 					>
-						プライバシーポリシー
+						Privacy Policy
 					</a>
 				</div>
 			</footer>
