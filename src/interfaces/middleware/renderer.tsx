@@ -11,7 +11,7 @@ export const renderer = jsxRenderer(({ children }) => {
 				<link rel="icon" type="image/x-icon" href="/favicon.svg" />
 
 				<ViteClient />
-				<Link href="/src/style.css" rel="stylesheet" />
+				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
 			<body>{children}</body>
 		</html>
