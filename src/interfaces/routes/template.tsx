@@ -1,3 +1,9 @@
+import { Header } from "#/src/interfaces/components/layout/header";
+
 export function Template() {
-	return <h1>hello</h1>;
+	return (
+		<div>
+			<Header />
+		</div>
+	);
 }
