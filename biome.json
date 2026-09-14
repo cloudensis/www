@@ -1,0 +1,38 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
+	"formatter": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"correctness": {
+				"useJsxKeyInIterable": "on"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "on"
+				}
+			}
+		}
+	},
+	"assist": {
+		"enabled": true
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!.claude",
+			"!.wrangler",
+			"!dist",
+			"!node_modules",
+			"!worker-configuration.d.ts"
+		]
+	}
+}
