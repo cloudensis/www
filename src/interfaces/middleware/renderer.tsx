@@ -13,7 +13,7 @@ export const renderer = jsxRenderer(({ children }) => {
 				<ViteClient />
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
-			<body>{children}</body>
+			<body class="bg-white font-light text-neutral-600">{children}</body>
 		</html>
 	);
 });
