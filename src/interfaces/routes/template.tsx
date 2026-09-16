@@ -260,10 +260,10 @@ export function Template() {
 function FirstView() {
 	return (
 		<div class="py-16">
-			<p class="font-bold text-3xl">
-				より<span class="text-blue-800">シンプル</span>に、
+			<p class="font-bold text-3xl text-black">
+				よりシンプルで
 				<br />
-				より価値を生む<span class="text-blue-800">ソフトウェア</span>を。
+				より価値を生むソフトウェア
 			</p>
 			<p class="mt-4 text-sm">
 				AIによって、ソフトウェアは誰でも作れるようになりました。
