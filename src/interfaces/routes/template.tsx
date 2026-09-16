@@ -1,6 +1,7 @@
 import type { Child } from "hono/jsx";
 import { Footer } from "#/src/interfaces/components/layout/footer";
 import { Header } from "#/src/interfaces/components/layout/header";
+import { LinkButton } from "#/src/interfaces/components/ui/button";
 
 export function Template() {
 	return (
@@ -258,25 +259,19 @@ export function Template() {
 
 function FirstView() {
 	return (
-		<div>
-			<p class="text-xl">確かな技術力で、事業の可能性を広げる。</p>
-			<p>
-				Go・TypeScript・Next.jsなどのモダンな技術スタックで、Webアプリケーション開発からクラウドインフラ構築までを支援します。
+		<div class="py-16">
+			<p class="font-bold text-3xl">
+				より<span class="text-blue-800">シンプル</span>に、
+				<br />
+				より価値を生む<span class="text-blue-800">ソフトウェア</span>を。
 			</p>
-			<div class="bg-neutral-950 p-4 font-mono text-neutral-300 leading-7">
-				<div>
-					<span class="text-blue-500">$</span> cloudensis --stack
-				</div>
-				<div>
-					<span class="text-blue-500">[+]</span> TypeScript Go
-				</div>
-				<div>
-					<span class="text-blue-500">[+]</span> Hono Next.js
-				</div>
-				<div>
-					<span class="text-blue-500">[+]</span> Cloudflare Google Cloud AWS
-				</div>
-			</div>
+			<p class="mt-4 text-sm">
+				AIによって、ソフトウェアは誰でも作れるようになりました。
+				いま、エンジニアの仕事は「何を作るか」ではなく「何を作らないか」を決めることです。
+				よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
+				それを見極める力が、エンジニアの価値だと考えています。
+			</p>
+			<LinkButton href="#contact">お問い合わせ</LinkButton>
 		</div>
 	);
 }

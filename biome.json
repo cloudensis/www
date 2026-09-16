@@ -11,7 +11,10 @@
 			},
 			"nursery": {
 				"useSortedClasses": {
-					"level": "on"
+					"level": "on",
+					"options": {
+						"functions": ["cn"]
+					}
 				}
 			}
 		}
