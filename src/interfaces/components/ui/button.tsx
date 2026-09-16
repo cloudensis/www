@@ -3,7 +3,9 @@ import { cn } from "#/src/interfaces/lib/utils";
 
 const variants = {
 	variant: {
-		default: cn("inline-block cursor-pointer rounded bg-blue-800 text-white"),
+		default: cn(
+			"inline-block cursor-pointer rounded bg-neutral-800 text-white",
+		),
 	},
 	size: {
 		default: cn("px-4 py-2"),
