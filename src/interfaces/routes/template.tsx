@@ -7,7 +7,7 @@ export function Template() {
 	return (
 		<div>
 			<Header />
-			<main class="mx-auto max-w-5xl space-y-16 px-5">
+			<main class="mx-auto max-w-5xl space-y-20 px-4 lg:px-8">
 				<FirstView />
 				<Section title="事業内容">
 					<Services />
@@ -28,12 +28,12 @@ export function Template() {
 function FirstView() {
 	return (
 		<div class="py-16">
-			<p class="font-medium text-4xl text-neutral-800 leading-normal">
+			<p class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
 				よりシンプルで
 				<br />
 				より価値を生むソフトウェア
 			</p>
-			<p class="my-4 max-w-2xl text-sm">
+			<p class="my-4 max-w-2xl text-sm leading-normal">
 				AIによって、ソフトウェアは誰でも作れるようになりました。
 				いま、エンジニアの仕事は「何を作るか」ではなく「何を作らないか」を決めることです。
 				よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
