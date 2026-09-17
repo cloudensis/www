@@ -4,7 +4,7 @@ import { cn } from "#/src/interfaces/lib/utils";
 const variants = {
 	variant: {
 		default: cn(
-			"inline-block cursor-pointer rounded bg-neutral-800 text-white",
+			"inline-block cursor-pointer rounded bg-neutral-800 text-white hover:bg-neutral-700",
 		),
 	},
 	size: {
