@@ -6,7 +6,7 @@ import { Textarea } from "#/src/interfaces/components/ui/textarea";
 
 export function Template() {
 	return (
-		<div>
+		<>
 			<FirstView />
 			<Section id="services" title="事業内容">
 				<Services />
@@ -17,7 +17,7 @@ export function Template() {
 			<Section id="contact" title="お問い合わせ">
 				<ContactForm />
 			</Section>
-		</div>
+		</>
 	);
 }
 
