@@ -1,5 +1,7 @@
 import { jsxRenderer } from "hono/jsx-renderer";
 import { Link, ViteClient } from "vite-ssr-components/hono";
+import { Footer } from "#/src/interfaces/components/layout/footer";
+import { Header } from "#/src/interfaces/components/layout/header";
 
 export const renderer = jsxRenderer(({ children }) => {
 	return (
@@ -13,7 +15,13 @@ export const renderer = jsxRenderer(({ children }) => {
 				<ViteClient />
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
-			<body class="bg-neutral-100 font-light text-neutral-600">{children}</body>
+			<body class="bg-neutral-100 font-light text-neutral-600">
+				<Header />
+				<main class="mx-auto max-w-5xl space-y-20 px-4 lg:px-8">
+					{children}
+				</main>
+				<Footer />
+			</body>
 		</html>
 	);
 });

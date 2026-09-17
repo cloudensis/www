@@ -1,27 +1,22 @@
-import type { Child } from "hono/jsx";
-import { Footer } from "#/src/interfaces/components/layout/footer";
-import { Header } from "#/src/interfaces/components/layout/header";
-import { LinkButton } from "#/src/interfaces/components/ui/button";
-import { ContactForm } from "./contact-form";
+import { Section } from "#/src/interfaces/components/layout/section";
+import { Button, LinkButton } from "#/src/interfaces/components/ui/button";
+import { Input } from "#/src/interfaces/components/ui/input";
+import { Select } from "#/src/interfaces/components/ui/select";
+import { Textarea } from "#/src/interfaces/components/ui/textarea";
 
 export function Template() {
 	return (
 		<div>
-			<Header />
-			<main class="mx-auto max-w-5xl space-y-20 px-4 lg:px-8">
-				<FirstView />
-				<Section id="services" title="事業内容">
-					<Services />
-				</Section>
-				<Section id="company" title="会社概要">
-					<CompanyOverview />
-				</Section>
-				<Section id="contact" title="お問い合わせ">
-					<ContactForm />
-				</Section>
-			</main>
-
-			<Footer />
+			<FirstView />
+			<Section id="services" title="事業内容">
+				<Services />
+			</Section>
+			<Section id="company" title="会社概要">
+				<CompanyOverview />
+			</Section>
+			<Section id="contact" title="お問い合わせ">
+				<ContactForm />
+			</Section>
 		</div>
 	);
 }
@@ -42,21 +37,6 @@ function FirstView() {
 			</p>
 			<LinkButton href="#contact">お問い合わせ</LinkButton>
 		</div>
-	);
-}
-
-type SectionProps = {
-	id: string;
-	title: string;
-	children: Child;
-};
-
-function Section({ id, title, children }: SectionProps) {
-	return (
-		<section id={id}>
-			<h2 class="mb-4 font-medium text-2xl">{title}</h2>
-			<div>{children}</div>
-		</section>
 	);
 }
 
@@ -102,5 +82,102 @@ function CompanyOverview() {
 			<dt>本社所在地</dt>
 			<dd>宮城県仙台市青葉区中央2-11-19 仙南ビル4階 -A</dd>
 		</dl>
+	);
+}
+
+function ContactForm() {
+	return (
+		<form class="space-y-6">
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+				<div class="space-y-2">
+					<label class="block" htmlFor="name">
+						お名前
+					</label>
+					<Input
+						id="name"
+						name="name"
+						type="text"
+						placeholder="山田 太郎"
+						required
+					/>
+				</div>
+
+				<div class="space-y-2">
+					<label class="block" htmlFor="company-name">
+						会社名
+					</label>
+					<Input
+						id="company-name"
+						name="company-name"
+						type="text"
+						placeholder="株式会社サンプル"
+						required
+					/>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+				<div class="space-y-2">
+					<label class="block" htmlFor="email">
+						メールアドレス
+					</label>
+					<Input
+						id="email"
+						name="email"
+						type="email"
+						placeholder="taro@example.com"
+						required
+					/>
+				</div>
+				<div class="space-y-2">
+					<label class="block" htmlFor="inquiry-type">
+						お問い合わせ種別
+					</label>
+					<Select id="inquiry-type" name="inquiry-type" required>
+						<option value="">選択してください</option>
+						<option value="システム開発支援について">
+							システム開発支援について
+						</option>
+						<option value="技術教育について">技術教育について</option>
+						<option value="自社プロダクトについて">
+							自社プロダクトについて
+						</option>
+						<option value="その他">その他</option>
+					</Select>
+				</div>
+			</div>
+
+			<div class="space-y-2">
+				<label class="block" htmlFor="message">
+					お問い合わせ内容
+				</label>
+				<Textarea
+					id="message"
+					name="message"
+					rows={4}
+					placeholder="ご依頼内容・ご相談内容をご記入ください"
+					required
+				></Textarea>
+			</div>
+
+			<div class="flex items-center justify-center gap-2">
+				<Input id="consent" name="consent" type="checkbox" required />
+				<label htmlFor="consent">
+					<a
+						href="/privacy"
+						class="underline"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Privacy Policy
+					</a>
+					に同意する
+				</label>
+			</div>
+
+			<Button type="submit" class="mx-auto block w-48">
+				送信
+			</Button>
+		</form>
 	);
 }
