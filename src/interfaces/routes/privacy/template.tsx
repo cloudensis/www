@@ -2,8 +2,8 @@ import { Section } from "../../components/layout/section";
 
 export function Template() {
 	return (
-		<main class="mx-auto max-w-5xl space-y-12 px-4 py-20 lg:px-8">
-			<h1>プライバシーポリシー</h1>
+		<main class="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-8">
+			<h1 class="font-medium text-2xl">プライバシーポリシー</h1>
 
 			<p>
 				Cloudensis合同会社（以下「当社」といいます）は、お客様の個人情報を適切に取り扱うことを重要な責務と考え、以下のとおりプライバシーポリシーを定めます。
