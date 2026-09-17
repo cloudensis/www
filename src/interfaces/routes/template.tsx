@@ -1,8 +1,7 @@
+import { company } from "#/src/domains/company/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
-import { Button, LinkButton } from "#/src/interfaces/components/ui/button";
-import { Input } from "#/src/interfaces/components/ui/input";
-import { Select } from "#/src/interfaces/components/ui/select";
-import { Textarea } from "#/src/interfaces/components/ui/textarea";
+import { LinkButton } from "#/src/interfaces/components/ui/button";
+import { DescriptionList } from "../components/ui/description-list";
 
 export function Template() {
 	return (
@@ -13,9 +12,6 @@ export function Template() {
 			</Section>
 			<Section id="company" title="会社概要">
 				<CompanyOverview />
-			</Section>
-			<Section id="contact" title="お問い合わせ">
-				<ContactForm />
 			</Section>
 		</main>
 	);
@@ -35,7 +31,7 @@ function FirstView() {
 				よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
 				それを見極める力が、エンジニアの価値だと考えています。
 			</p>
-			<LinkButton href="#contact">お問い合わせ</LinkButton>
+			<LinkButton href="/contact">お問い合わせ</LinkButton>
 		</div>
 	);
 }
@@ -72,112 +68,27 @@ function Services() {
 
 function CompanyOverview() {
 	return (
-		<dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2">
-			<dt>会社名</dt>
-			<dd>Cloudensis合同会社</dd>
-
-			<dt>設立</dt>
-			<dd>2026年4月1日</dd>
-
-			<dt>本社所在地</dt>
-			<dd>宮城県仙台市青葉区中央2-11-19 仙南ビル4階 -A</dd>
-		</dl>
-	);
-}
-
-function ContactForm() {
-	return (
-		<form class="space-y-6">
-			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-				<div class="space-y-2">
-					<label class="block" htmlFor="name">
-						お名前
-					</label>
-					<Input
-						id="name"
-						name="name"
-						type="text"
-						placeholder="山田 太郎"
-						required
-					/>
-				</div>
-
-				<div class="space-y-2">
-					<label class="block" htmlFor="company-name">
-						会社名
-					</label>
-					<Input
-						id="company-name"
-						name="company-name"
-						type="text"
-						placeholder="株式会社サンプル"
-						required
-					/>
-				</div>
-			</div>
-
-			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-				<div class="space-y-2">
-					<label class="block" htmlFor="email">
-						メールアドレス
-					</label>
-					<Input
-						id="email"
-						name="email"
-						type="email"
-						placeholder="taro@example.com"
-						required
-					/>
-				</div>
-				<div class="space-y-2">
-					<label class="block" htmlFor="inquiry-type">
-						お問い合わせ種別
-					</label>
-					<Select id="inquiry-type" name="inquiry-type" required>
-						<option value="">選択してください</option>
-						<option value="システム開発支援について">
-							システム開発支援について
-						</option>
-						<option value="技術教育について">技術教育について</option>
-						<option value="自社プロダクトについて">
-							自社プロダクトについて
-						</option>
-						<option value="その他">その他</option>
-					</Select>
-				</div>
-			</div>
-
-			<div class="space-y-2">
-				<label class="block" htmlFor="message">
-					お問い合わせ内容
-				</label>
-				<Textarea
-					id="message"
-					name="message"
-					rows={4}
-					placeholder="ご依頼内容・ご相談内容をご記入ください"
-					required
-				></Textarea>
-			</div>
-
-			<div class="flex items-center justify-center gap-2">
-				<Input id="consent" name="consent" type="checkbox" required />
-				<label htmlFor="consent">
-					<a
-						href="/privacy"
-						class="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						プライバシーポリシー
-					</a>
-					に同意する
-				</label>
-			</div>
-
-			<Button type="submit" class="mx-auto block w-48">
-				送信
-			</Button>
-		</form>
+		<DescriptionList
+			items={[
+				{ term: "会社名", details: company.name },
+				{ term: "代表者", details: company.representative },
+				{
+					term: "設立",
+					details: company.establishedOn.toLocaleDateString("ja-JP", {
+						dateStyle: "long",
+						timeZone: "Asia/Tokyo",
+					}),
+				},
+				{
+					term: "本社所在地",
+					details: (
+						<>
+							<p>〒{company.postalCode}</p>
+							<p>{company.address}</p>
+						</>
+					),
+				},
+			]}
+		/>
 	);
 }
