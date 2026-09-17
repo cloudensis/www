@@ -6,7 +6,7 @@ import { Textarea } from "#/src/interfaces/components/ui/textarea";
 
 export function Template() {
 	return (
-		<>
+		<main class="mx-auto max-w-5xl space-y-20 px-4 py-20 lg:px-8">
 			<FirstView />
 			<Section id="services" title="事業内容">
 				<Services />
@@ -17,13 +17,13 @@ export function Template() {
 			<Section id="contact" title="お問い合わせ">
 				<ContactForm />
 			</Section>
-		</>
+		</main>
 	);
 }
 
 function FirstView() {
 	return (
-		<div class="py-16">
+		<div>
 			<p class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
 				よりシンプルで
 				<br />
@@ -169,7 +169,7 @@ function ContactForm() {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Privacy Policy
+						プライバシーポリシー
 					</a>
 					に同意する
 				</label>

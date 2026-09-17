@@ -17,9 +17,8 @@ export const renderer = jsxRenderer(({ children }) => {
 			</head>
 			<body class="bg-neutral-100 font-light text-neutral-600">
 				<Header />
-				<main class="mx-auto max-w-5xl space-y-20 px-4 lg:px-8">
-					{children}
-				</main>
+
+				{children}
 				<Footer />
 			</body>
 		</html>
