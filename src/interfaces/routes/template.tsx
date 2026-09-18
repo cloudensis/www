@@ -1,7 +1,7 @@
 import { company } from "#/src/domains/company/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
 import { LinkButton } from "#/src/interfaces/components/ui/button";
-import { DescriptionList } from "../components/ui/description-list";
+import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
 
 export function Template() {
 	return (

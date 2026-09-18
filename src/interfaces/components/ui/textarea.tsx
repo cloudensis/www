@@ -4,7 +4,6 @@ import { cn } from "#/src/interfaces/lib/utils";
 type TextareaProps = JSX.IntrinsicElements["textarea"];
 
 export function Textarea({
-	type,
 	class: className,
 	children,
 	...props

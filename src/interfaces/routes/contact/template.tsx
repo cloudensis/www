@@ -10,6 +10,7 @@ export type ContactFormValues = {
 	email: string;
 	type: string;
 	message: string;
+	consent: boolean;
 };
 
 const emptyValues: ContactFormValues = {
@@ -18,6 +19,7 @@ const emptyValues: ContactFormValues = {
 	email: "",
 	type: "",
 	message: "",
+	consent: false,
 };
 
 type TemplateProps = {
@@ -36,7 +38,10 @@ export function Template({
 			<h1 class="font-medium text-2xl">お問い合わせ</h1>
 
 			{errors.length > 0 && (
-				<div class="rounded border border-red-600 px-4 py-3 text-red-700">
+				<div
+					role="alert"
+					class="rounded border border-red-600 px-4 py-3 text-red-700"
+				>
 					<p class="mb-2 font-medium">入力内容をご確認ください。</p>
 					<ul class="list-disc space-y-1 pl-6">
 						{errors.map((error) => (
@@ -56,6 +61,7 @@ export function Template({
 							id="name"
 							name="name"
 							type="text"
+							autocomplete="name"
 							placeholder="山田 太郎"
 							value={values.name}
 							required
@@ -70,6 +76,7 @@ export function Template({
 							id="company-name"
 							name="company-name"
 							type="text"
+							autocomplete="organization"
 							placeholder="株式会社サンプル"
 							value={values.companyName}
 						/>
@@ -85,6 +92,7 @@ export function Template({
 							id="email"
 							name="email"
 							type="email"
+							autocomplete="email"
 							placeholder="taro@example.com"
 							value={values.email}
 							required
@@ -121,7 +129,13 @@ export function Template({
 				</div>
 
 				<div class="flex items-center justify-center gap-2">
-					<Input id="consent" name="consent" type="checkbox" required />
+					<Input
+						id="consent"
+						name="consent"
+						type="checkbox"
+						checked={values.consent}
+						required
+					/>
 					<label htmlFor="consent">
 						<a
 							href="/privacy"

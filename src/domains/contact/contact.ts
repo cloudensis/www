@@ -97,6 +97,7 @@ export function validateContact(input: ContactInput): ValidateContactResult {
 		errors.push("プライバシーポリシーへの同意が必要です。");
 	}
 
+	// 後半の条件は type を ContactType に絞り込むためのもの（上でエラー追加済み）
 	if (errors.length > 0 || !isContactType(type)) {
 		return { success: false, errors };
 	}
