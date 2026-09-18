@@ -37,8 +37,15 @@ const maxLength = {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// 改行などの制御文字。メールヘッダ（件名・Reply-To の表示名）に入る項目では拒否する。
+const controlCharPattern = /\p{Cc}/u;
+
 function toText(value: unknown): string {
 	return typeof value === "string" ? value.trim() : "";
+}
+
+function hasControlChar(value: string): boolean {
+	return controlCharPattern.test(value);
 }
 
 function isContactType(value: string): value is ContactType {
@@ -53,6 +60,8 @@ export function validateContact(input: ContactInput): ValidateContactResult {
 		errors.push("お名前を入力してください。");
 	} else if (name.length > maxLength.name) {
 		errors.push(`お名前は${maxLength.name}文字以内で入力してください。`);
+	} else if (hasControlChar(name)) {
+		errors.push("お名前に使用できない文字が含まれています。");
 	}
 
 	const companyName = toText(input.companyName);
@@ -60,6 +69,8 @@ export function validateContact(input: ContactInput): ValidateContactResult {
 		errors.push("会社名を入力してください。");
 	} else if (companyName.length > maxLength.companyName) {
 		errors.push(`会社名は${maxLength.companyName}文字以内で入力してください。`);
+	} else if (hasControlChar(companyName)) {
+		errors.push("会社名に使用できない文字が含まれています。");
 	}
 
 	const email = toText(input.email);
