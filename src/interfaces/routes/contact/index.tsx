@@ -5,7 +5,7 @@ import {
 	validateContact,
 } from "#/src/domains/contact/contact";
 import { verifyTurnstile } from "#/src/interfaces/lib/turnstile";
-import { type ContactFormValues, Template } from "./template";
+import { type ContactFormValues, emptyValues, Template } from "./template";
 
 export const contactRoutes = new Hono<{ Bindings: CloudflareBindings }>();
 
@@ -13,10 +13,12 @@ const contactDescription =
 	"ソフトウェア開発支援、技術教育、自社プロダクトに関するご相談・ご依頼はこちらからお問い合わせください。";
 
 contactRoutes.get("/contact", async (c) => {
-	return c.render(<Template turnstileSiteKey={c.env.TURNSTILE_SITE_KEY} />, {
-		title: "お問い合わせ",
-		description: contactDescription,
-	});
+	// 事業内容からの導線: /contact?type=... でお問い合わせ種別を事前選択する
+	const values = { ...emptyValues, type: c.req.query("type") ?? "" };
+	return c.render(
+		<Template turnstileSiteKey={c.env.TURNSTILE_SITE_KEY} values={values} />,
+		{ title: "お問い合わせ", description: contactDescription },
+	);
 });
 
 contactRoutes.post("/contact", async (c) => {

@@ -13,7 +13,7 @@ export type ContactFormValues = {
 	consent: boolean;
 };
 
-const emptyValues: ContactFormValues = {
+export const emptyValues: ContactFormValues = {
 	name: "",
 	companyName: "",
 	email: "",
