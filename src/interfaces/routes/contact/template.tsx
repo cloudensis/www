@@ -21,13 +21,18 @@ const emptyValues: ContactFormValues = {
 };
 
 type TemplateProps = {
+	turnstileSiteKey: string;
 	values?: ContactFormValues;
 	errors?: string[];
 };
 
-export function Template({ values = emptyValues, errors = [] }: TemplateProps) {
+export function Template({
+	turnstileSiteKey,
+	values = emptyValues,
+	errors = [],
+}: TemplateProps) {
 	return (
-		<main class="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-8">
+		<div class="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-8">
 			<h1 class="font-medium text-2xl">お問い合わせ</h1>
 
 			{errors.length > 0 && (
@@ -131,10 +136,22 @@ export function Template({ values = emptyValues, errors = [] }: TemplateProps) {
 					</label>
 				</div>
 
+				<div
+					class="cf-turnstile mx-auto w-fit"
+					data-sitekey={turnstileSiteKey}
+					data-language="ja"
+				/>
+
 				<Button type="submit" class="mx-auto block w-48">
 					送信
 				</Button>
 			</form>
-		</main>
+
+			<script
+				src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+				async
+				defer
+			/>
+		</div>
 	);
 }

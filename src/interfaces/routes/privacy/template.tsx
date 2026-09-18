@@ -4,7 +4,7 @@ import { DescriptionList } from "#/src/interfaces/components/ui/description-list
 
 export function Template() {
 	return (
-		<main class="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-8">
+		<div class="mx-auto max-w-5xl space-y-12 px-4 py-12 lg:px-8">
 			<h1 class="font-medium text-2xl">プライバシーポリシー</h1>
 
 			<div class="space-y-4">
@@ -116,8 +116,15 @@ export function Template() {
 				</div>
 			</Section>
 
-			<Section id="cookies" title="7. Cookie・アクセス解析ツール">
-				<p>本サイトでは、Cookieおよびアクセス解析ツールを使用していません。</p>
+			<Section id="cookies" title="7. Cookie・外部サービスの利用">
+				<div class="space-y-4">
+					<p>
+						本サイトのお問い合わせフォームでは、不正な自動送信を防ぐため、Cloudflare,
+						Inc.（米国）が提供するボット判定サービス「Cloudflare
+						Turnstile」を利用しています。Turnstileは判定のために、IPアドレスやブラウザに関する情報を同社に送信し、Cookieを使用することがあります。詳細は同社のプライバシーポリシーをご確認ください。
+					</p>
+					<p>本サイトでは、アクセス解析ツールは使用していません。</p>
+				</div>
 			</Section>
 
 			<Section id="disclosure-requests" title="8. 開示・訂正・利用停止等の請求">
@@ -178,6 +185,6 @@ export function Template() {
 				<br />
 				{company.name}
 			</p>
-		</main>
+		</div>
 	);
 }
