@@ -64,10 +64,9 @@ export function validateContact(input: ContactInput): ValidateContactResult {
 		errors.push("お名前に使用できない文字が含まれています。");
 	}
 
+	// 会社名は任意。所属のない個人からのお問い合わせや開示等の請求を妨げないため。
 	const companyName = toText(input.companyName);
-	if (companyName === "") {
-		errors.push("会社名を入力してください。");
-	} else if (companyName.length > maxLength.companyName) {
+	if (companyName.length > maxLength.companyName) {
 		errors.push(`会社名は${maxLength.companyName}文字以内で入力してください。`);
 	} else if (hasControlChar(companyName)) {
 		errors.push("会社名に使用できない文字が含まれています。");
@@ -120,7 +119,7 @@ export function formatContactEmail(contact: Contact): {
 		contact.name,
 		"",
 		"■ 会社名",
-		contact.companyName,
+		contact.companyName === "" ? "（未入力）" : contact.companyName,
 		"",
 		"■ メールアドレス",
 		contact.email,
