@@ -26,6 +26,7 @@ contactRoutes.post("/contact", async (c) => {
 		email: text(form, "email"),
 		type: text(form, "contact-type"),
 		message: text(form, "message"),
+		consent: form.get("consent") !== null,
 	};
 	const result = validateContact({ ...values, consent: form.get("consent") });
 

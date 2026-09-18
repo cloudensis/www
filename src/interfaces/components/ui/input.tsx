@@ -37,17 +37,6 @@ type RadioProps = JSX.IntrinsicElements["input"] & { type?: never };
 
 function Radio({ class: className, ...props }: RadioProps) {
 	return (
-		<input
-			data-slot="radio"
-			type="radio"
-			class={cn(
-				// "size-4 appearance-none rounded-full border border-stone-200 bg-stone-100 outline-none dark:border-stone-700 dark:bg-stone-900",
-				// "checked:border-4 checked:border-blue-600 dark:checked:border-blue-500",
-				// "focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:border-blue-400 dark:focus-visible:ring-blue-400",
-				// "disabled:cursor-not-allowed disabled:opacity-50",
-				className,
-			)}
-			{...props}
-		/>
+		<input data-slot="radio" type="radio" class={cn(className)} {...props} />
 	);
 }

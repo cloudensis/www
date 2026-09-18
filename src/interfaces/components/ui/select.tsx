@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx";
 import { cn } from "#/src/interfaces/lib/utils";
 
-type SelectProps = JSX.IntrinsicElements["option"];
+type SelectProps = JSX.IntrinsicElements["select"];
 
 export function Select({ class: className, children, ...props }: SelectProps) {
 	return (
