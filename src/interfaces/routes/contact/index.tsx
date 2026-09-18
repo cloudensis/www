@@ -9,8 +9,14 @@ import { type ContactFormValues, Template } from "./template";
 
 export const contactRoutes = new Hono<{ Bindings: CloudflareBindings }>();
 
+const contactDescription =
+	"ソフトウェア開発支援、技術教育、自社プロダクトに関するご相談・ご依頼はこちらからお問い合わせください。";
+
 contactRoutes.get("/contact", async (c) => {
-	return c.render(<Template turnstileSiteKey={c.env.TURNSTILE_SITE_KEY} />);
+	return c.render(<Template turnstileSiteKey={c.env.TURNSTILE_SITE_KEY} />, {
+		title: "お問い合わせ",
+		description: contactDescription,
+	});
 });
 
 contactRoutes.post("/contact", async (c) => {
@@ -38,6 +44,7 @@ contactRoutes.post("/contact", async (c) => {
 				values={values}
 				errors={result.errors}
 			/>,
+			{ title: "お問い合わせ", description: contactDescription },
 		);
 	}
 
@@ -57,6 +64,7 @@ contactRoutes.post("/contact", async (c) => {
 					"ボットでないことの確認に失敗しました。ページを再読み込みして、もう一度お試しください。",
 				]}
 			/>,
+			{ title: "お問い合わせ", description: contactDescription },
 		);
 	}
 
@@ -80,6 +88,7 @@ contactRoutes.post("/contact", async (c) => {
 				values={values}
 				errors={["送信に失敗しました。時間をおいて、再度お試しください。"]}
 			/>,
+			{ title: "お問い合わせ", description: contactDescription },
 		);
 	}
 

@@ -20,11 +20,11 @@ export function Template() {
 function FirstView() {
 	return (
 		<div>
-			<p class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
+			<h1 class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
 				よりシンプルで
 				<br />
 				より価値を生むソフトウェア
-			</p>
+			</h1>
 			<p class="my-6 max-w-2xl text-sm leading-normal">
 				AIによって、ソフトウェアは誰でも作れるようになりました。
 				いま、エンジニアの仕事は「何を作るか」ではなく「何を作らないか」を決めることです。
