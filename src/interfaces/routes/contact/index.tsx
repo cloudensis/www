@@ -15,7 +15,11 @@ contactRoutes.get("/contact", async (c) => {
 
 contactRoutes.post("/contact", async (c) => {
 	const turnstileSiteKey = c.env.TURNSTILE_SITE_KEY;
-	const form = await c.req.formData();
+	// フォーム以外の Content-Type で送られた場合は 400 を返す
+	const form = await c.req.formData().catch(() => null);
+	if (form === null) {
+		return c.text("Bad Request", 400);
+	}
 	const values: ContactFormValues = {
 		name: text(form, "name"),
 		companyName: text(form, "company-name"),
