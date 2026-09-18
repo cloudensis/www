@@ -6,5 +6,12 @@
 	"send_email": [{ "name": "EMAIL" }],
 	"vars": {
 		"TURNSTILE_SITE_KEY": "0x4AAAAAAE74sVfBuWWTb_at"
+	},
+	"observability": {
+		"logs": {
+			"enabled": true,
+			"invocation_logs": true,
+			"persist": true
+		}
 	}
 }
