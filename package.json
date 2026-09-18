@@ -13,17 +13,17 @@
 		"@fontsource-variable/noto-sans-jp": "^5.3.0",
 		"@fontsource-variable/outfit": "^5.3.0",
 		"clsx": "^2.1.1",
-		"hono": "^4.13.7",
+		"hono": "^4.13.8",
 		"tailwind-merge": "^3.7.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.13",
-		"@cloudflare/vite-plugin": "^1.54.8",
+		"@cloudflare/vite-plugin": "^1.54.9",
 		"@tailwindcss/vite": "^4.3.3",
 		"tailwindcss": "^4.3.3",
 		"vite": "^8.3.0",
-		"vite-ssr-components": "^0.6.1",
-		"wrangler": "^4.131.1"
+		"vite-ssr-components": "^0.8.0",
+		"wrangler": "^4.131.2"
 	},
 	"imports": {
 		"#/*": [
