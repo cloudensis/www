@@ -64,7 +64,7 @@ export function Template({
 
 					<div class="space-y-2">
 						<label class="block" htmlFor="company-name">
-							会社名
+							会社名（任意）
 						</label>
 						<Input
 							id="company-name"
@@ -72,7 +72,6 @@ export function Template({
 							type="text"
 							placeholder="株式会社サンプル"
 							value={values.companyName}
-							required
 						/>
 					</div>
 				</div>
