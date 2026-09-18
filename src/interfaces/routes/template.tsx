@@ -1,4 +1,5 @@
 import { company } from "#/src/domains/company/constants";
+import { type ContactType, contactTypes } from "#/src/domains/contact/contact";
 import { Section } from "#/src/interfaces/components/layout/section";
 import { LinkButton } from "#/src/interfaces/components/ui/button";
 import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
@@ -36,6 +37,17 @@ function FirstView() {
 	);
 }
 
+function ContactLink({ type }: { type: ContactType }) {
+	return (
+		<a
+			href={`/contact?type=${encodeURIComponent(type)}`}
+			class="mt-3 inline-block underline"
+		>
+			この事業について問い合わせる
+		</a>
+	);
+}
+
 function Services() {
 	return (
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -47,6 +59,7 @@ function Services() {
 					Cloud, AWS,
 					Cloudflareを中心としたクラウドインフラの構築・技術支援を行います。
 				</p>
+				<ContactLink type={contactTypes[0]} />
 			</div>
 
 			<div>
@@ -54,6 +67,7 @@ function Services() {
 				<p>
 					高度IT人材の育成に向けたプログラミング・AI活用の教育カリキュラムの提供、および技術情報コンテンツの企画・制作を行います。
 				</p>
+				<ContactLink type={contactTypes[1]} />
 			</div>
 
 			<div>
@@ -61,6 +75,7 @@ function Services() {
 				<p>
 					Web標準技術やクラウドネイティブなアーキテクチャを活用した、自社オリジナルのWebアプリケーション・デジタルコンテンツの企画・開発を行います。
 				</p>
+				<ContactLink type={contactTypes[2]} />
 			</div>
 		</div>
 	);
