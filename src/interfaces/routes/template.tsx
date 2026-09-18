@@ -5,7 +5,7 @@ import { DescriptionList } from "../components/ui/description-list";
 
 export function Template() {
 	return (
-		<main class="mx-auto max-w-5xl space-y-20 px-4 py-12 lg:px-8">
+		<div class="mx-auto max-w-5xl space-y-20 px-4 py-12 lg:px-8">
 			<FirstView />
 			<Section id="services" title="事業内容">
 				<Services />
@@ -13,7 +13,7 @@ export function Template() {
 			<Section id="company" title="会社概要">
 				<CompanyOverview />
 			</Section>
-		</main>
+		</div>
 	);
 }
 
