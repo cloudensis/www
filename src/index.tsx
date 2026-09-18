@@ -1,6 +1,9 @@
 import { Hono } from "hono";
+import { bodyLimit } from "hono/body-limit";
 import { csrf } from "hono/csrf";
 import { HTTPException } from "hono/http-exception";
+import { secureHeaders } from "hono/secure-headers";
+import { contactRateLimit } from "#/src/interfaces/middleware/rate-limit";
 import { renderer } from "#/src/interfaces/middleware/renderer";
 import { contactCompleteRoutes } from "#/src/interfaces/routes/contact/complete/index";
 import { contactRoutes } from "#/src/interfaces/routes/contact/index";
@@ -11,8 +14,31 @@ import { privacyRoutes } from "#/src/interfaces/routes/privacy/index";
 
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
+app.use(
+	secureHeaders({
+		contentSecurityPolicy: {
+			defaultSrc: ["'self'"],
+			// Turnstile のウィジェット
+			scriptSrc: ["'self'", "https://challenges.cloudflare.com"],
+			frameSrc: ["https://challenges.cloudflare.com"],
+			// Tailwind の開発時インジェクションと Turnstile のインラインスタイル
+			styleSrc: ["'self'", "'unsafe-inline'"],
+			imgSrc: ["'self'", "data:"],
+			fontSrc: ["'self'"],
+			connectSrc: ["'self'"],
+			objectSrc: ["'none'"],
+			baseUri: ["'self'"],
+			formAction: ["'self'"],
+			frameAncestors: ["'none'"],
+		},
+	}),
+);
 app.use(renderer);
 app.use(csrf());
+
+// お問い合わせフォーム: ボディサイズ上限とレート制限
+app.use("/contact", bodyLimit({ maxSize: 64 * 1024 }));
+app.use("/contact", contactRateLimit);
 
 app.route("/", homeRoutes);
 app.route("/", contactRoutes);
