@@ -29,7 +29,7 @@ export const renderer = jsxRenderer(
 		const pageTitle = title ? `${title} | ${site.name}` : site.name;
 		const pageDescription = description ?? site.description;
 		const canonicalUrl = new URL(c.req.path, site.url).toString();
-		const ogImageUrl = new URL("/logo.png", site.url).toString();
+		const ogImageUrl = new URL("/ogp.png", site.url).toString();
 
 		return (
 			<html lang="ja">
