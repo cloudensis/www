@@ -2,9 +2,9 @@ import { Hono } from "hono";
 import { bodyLimit } from "hono/body-limit";
 import { csrf } from "hono/csrf";
 import { HTTPException } from "hono/http-exception";
-import { secureHeaders } from "hono/secure-headers";
 import { contactRateLimit } from "#/src/interfaces/middleware/rate-limit";
 import { renderer } from "#/src/interfaces/middleware/renderer";
+import { securityHeaders } from "#/src/interfaces/middleware/secure-headers";
 import { contactCompleteRoutes } from "#/src/interfaces/routes/contact/complete/index";
 import { contactRoutes } from "#/src/interfaces/routes/contact/index";
 import { Template as ErrorTemplate } from "#/src/interfaces/routes/error/template";
@@ -14,25 +14,7 @@ import { privacyRoutes } from "#/src/interfaces/routes/privacy/index";
 
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
-app.use(
-	secureHeaders({
-		contentSecurityPolicy: {
-			defaultSrc: ["'self'"],
-			// Turnstile のウィジェット
-			scriptSrc: ["'self'", "https://challenges.cloudflare.com"],
-			frameSrc: ["https://challenges.cloudflare.com"],
-			// Tailwind の開発時インジェクションと Turnstile のインラインスタイル
-			styleSrc: ["'self'", "'unsafe-inline'"],
-			imgSrc: ["'self'", "data:"],
-			fontSrc: ["'self'"],
-			connectSrc: ["'self'"],
-			objectSrc: ["'none'"],
-			baseUri: ["'self'"],
-			formAction: ["'self'"],
-			frameAncestors: ["'none'"],
-		},
-	}),
-);
+app.use(securityHeaders);
 app.use(renderer);
 app.use(csrf());
 
