@@ -6,8 +6,5 @@ export const contactCompleteRoutes = new Hono<{
 }>();
 
 contactCompleteRoutes.get("/contact/complete", async (c) => {
-	return c.render(<Template />, {
-		title: "お問い合わせを受け付けました",
-		noindex: true,
-	});
+	return c.render(<Template />);
 });
