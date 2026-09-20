@@ -10,5 +10,5 @@ export const site = {
 	name: "cloudensis",
 	url: "https://cloudensis.com",
 	description:
-		"Cloudensis合同会社は、Go・TypeScript・クラウドを用いたソフトウェア開発支援、技術教育、自社プロダクト開発を行う仙台のソフトウェア企業です。",
+		"cloudensisは、ソフトウェア開発支援、技術教育、自社プロダクト開発を行うソフトウェア企業です。",
 } as const;
