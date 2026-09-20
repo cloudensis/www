@@ -1,9 +1,9 @@
+import { Section } from "@cloudensis/design-system/components/layout/section";
 import { LinkButton } from "@cloudensis/design-system/components/ui/button";
+import { DescriptionList } from "@cloudensis/design-system/components/ui/description-list";
 import { company } from "#/src/domains/company/constants";
 import type { ContactType } from "#/src/domains/contact/contact";
 import { services } from "#/src/domains/service/constants";
-import { Section } from "#/src/interfaces/components/layout/section";
-import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
 import { paths } from "#/src/interfaces/paths";
 
 export function Template() {

@@ -1,8 +1,8 @@
 import { Button } from "@cloudensis/design-system/components/ui/button";
+import { Input } from "@cloudensis/design-system/components/ui/input";
+import { Select } from "@cloudensis/design-system/components/ui/select";
+import { Textarea } from "@cloudensis/design-system/components/ui/textarea";
 import { contactTypes } from "#/src/domains/contact/contact";
-import { Input } from "#/src/interfaces/components/ui/input";
-import { Select } from "#/src/interfaces/components/ui/select";
-import { Textarea } from "#/src/interfaces/components/ui/textarea";
 import { paths } from "#/src/interfaces/paths";
 
 export type ContactFormValues = {
