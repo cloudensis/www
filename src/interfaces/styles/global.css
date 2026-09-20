@@ -1,10 +1,2 @@
 @import "tailwindcss";
 @import "@cloudensis/design-system/index.css";
-@import "@fontsource-variable/outfit";
-@import "@fontsource-variable/noto-sans-jp";
-
-@theme {
-	--font-sans:
-		"Outfit Variable", "Noto Sans JP Variable", ui-sans-serif, system-ui,
-		sans-serif;
-}
