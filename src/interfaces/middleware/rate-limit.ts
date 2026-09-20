@@ -1,17 +1,12 @@
 import type { MiddlewareHandler } from "hono";
 import { HTTPException } from "hono/http-exception";
+import type { Env } from "#/src/interfaces/app";
 
 /**
- * お問い合わせフォームの POST を IP 単位で制限する。
+ * リクエストを IP 単位で制限する。
  * 上限は wrangler.jsonc の ratelimits（CONTACT_RATE_LIMITER）で設定する。
  */
-export const contactRateLimit: MiddlewareHandler<{
-	Bindings: CloudflareBindings;
-}> = async (c, next) => {
-	if (c.req.method !== "POST") {
-		return next();
-	}
-
+export const contactRateLimit: MiddlewareHandler<Env> = async (c, next) => {
 	const key = c.req.header("CF-Connecting-IP") ?? "unknown";
 	const { success } = await c.env.CONTACT_RATE_LIMITER.limit({ key });
 	if (!success) {

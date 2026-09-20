@@ -1,10 +1,7 @@
-import { Hono } from "hono";
+import type { App } from "#/src/interfaces/app";
+import { paths } from "#/src/interfaces/paths";
 import { Template } from "./template";
 
-export const contactCompleteRoutes = new Hono<{
-	Bindings: CloudflareBindings;
-}>();
-
-contactCompleteRoutes.get("/contact/complete", async (c) => {
-	return c.render(<Template />);
-});
+export const registerContactComplete = (app: App) => {
+	app.get(paths.contactComplete, (c) => c.render(<Template />));
+};

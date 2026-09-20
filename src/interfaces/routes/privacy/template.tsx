@@ -1,6 +1,7 @@
 import { company } from "#/src/domains/company/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
 import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
+import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
 	return (
@@ -169,7 +170,7 @@ export function Template() {
 								details: (
 									<>
 										本サイトの
-										<a href="/contact" class="underline">
+										<a href={paths.contact} class="underline">
 											お問い合わせフォーム
 										</a>
 										よりご連絡ください

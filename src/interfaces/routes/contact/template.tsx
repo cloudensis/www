@@ -3,6 +3,7 @@ import { Button } from "#/src/interfaces/components/ui/button";
 import { Input } from "#/src/interfaces/components/ui/input";
 import { Select } from "#/src/interfaces/components/ui/select";
 import { Textarea } from "#/src/interfaces/components/ui/textarea";
+import { paths } from "#/src/interfaces/paths";
 
 export type ContactFormValues = {
 	name: string;
@@ -138,7 +139,7 @@ export function Template({
 					/>
 					<label htmlFor="consent">
 						<a
-							href="/privacy"
+							href={paths.privacy}
 							class="underline"
 							target="_blank"
 							rel="noopener noreferrer"

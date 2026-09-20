@@ -1,31 +1,24 @@
 import { Hono } from "hono";
-import { bodyLimit } from "hono/body-limit";
 import { csrf } from "hono/csrf";
 import { HTTPException } from "hono/http-exception";
-import { contactRateLimit } from "#/src/interfaces/middleware/rate-limit";
+import type { Env } from "#/src/interfaces/app";
 import { renderer } from "#/src/interfaces/middleware/renderer";
 import { securityHeaders } from "#/src/interfaces/middleware/secure-headers";
-import { contactCompleteRoutes } from "#/src/interfaces/routes/contact/complete/index";
-import { contactRoutes } from "#/src/interfaces/routes/contact/index";
+import { registerContactComplete } from "#/src/interfaces/routes/contact/complete/index";
+import { registerContact } from "#/src/interfaces/routes/contact/index";
 import { Template as ErrorTemplate } from "#/src/interfaces/routes/error/template";
-import { homeRoutes } from "#/src/interfaces/routes/index";
+import { registerHome } from "#/src/interfaces/routes/index";
 import { Template as NotFoundTemplate } from "#/src/interfaces/routes/not-found/template";
-import { privacyRoutes } from "#/src/interfaces/routes/privacy/index";
+import { registerPrivacy } from "#/src/interfaces/routes/privacy/index";
 
-const app = new Hono<{ Bindings: CloudflareBindings }>();
+const app = new Hono<Env>();
 
-app.use(securityHeaders);
-app.use(renderer);
-app.use(csrf());
+app.use(securityHeaders, renderer, csrf());
 
-// お問い合わせフォーム: ボディサイズ上限とレート制限
-app.use("/contact", bodyLimit({ maxSize: 64 * 1024 }));
-app.use("/contact", contactRateLimit);
-
-app.route("/", homeRoutes);
-app.route("/", contactRoutes);
-app.route("/", contactCompleteRoutes);
-app.route("/", privacyRoutes);
+registerHome(app);
+registerContact(app);
+registerContactComplete(app);
+registerPrivacy(app);
 
 app.notFound((c) => {
 	c.status(404);

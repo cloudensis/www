@@ -4,6 +4,7 @@ import { services } from "#/src/domains/service/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
 import { LinkButton } from "#/src/interfaces/components/ui/button";
 import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
+import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
 	return (
@@ -33,14 +34,17 @@ function FirstView() {
 				よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
 				それを見極める力が、エンジニアの価値だと考えています。
 			</p>
-			<LinkButton href="/contact">お問い合わせ</LinkButton>
+			<LinkButton href={paths.contact}>お問い合わせ</LinkButton>
 		</div>
 	);
 }
 
 function ContactLink({ type }: { type: ContactType }) {
 	return (
-		<a href={`/contact?type=${type}`} class="mt-3 inline-block underline">
+		<a
+			href={`${paths.contact}?type=${type}`}
+			class="mt-3 inline-block underline"
+		>
 			この事業について問い合わせる
 		</a>
 	);
