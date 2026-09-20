@@ -33,7 +33,7 @@ export const renderer = jsxRenderer(({ children }) => {
 				<ViteClient />
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
-			<body class="flex min-h-svh flex-col bg-neutral-100 font-light text-neutral-600">
+			<body class="flex min-h-svh flex-col">
 				<Header />
 				<main class="flex-1">{children}</main>
 				<Footer />
