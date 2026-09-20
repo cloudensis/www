@@ -1,8 +1,7 @@
-import { Hono } from "hono";
+import type { App } from "#/src/interfaces/app";
+import { paths } from "#/src/interfaces/paths";
 import { Template } from "./template";
 
-export const homeRoutes = new Hono<{ Bindings: CloudflareBindings }>();
-
-homeRoutes.get("/", async (c) => {
-	return c.render(<Template />);
-});
+export const registerHome = (app: App) => {
+	app.get(paths.home, (c) => c.render(<Template />));
+};

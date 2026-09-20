@@ -1,4 +1,5 @@
 import { LinkButton } from "#/src/interfaces/components/ui/button";
+import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
 	return (
@@ -7,7 +8,7 @@ export function Template() {
 			<p>
 				申し訳ありません。処理中に問題が発生しました。時間をおいて、再度お試しください。
 			</p>
-			<LinkButton href="/">トップページへ戻る</LinkButton>
+			<LinkButton href={paths.home}>トップページへ戻る</LinkButton>
 		</div>
 	);
 }

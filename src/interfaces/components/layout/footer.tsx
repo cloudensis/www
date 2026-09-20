@@ -1,4 +1,5 @@
 import { company } from "#/src/domains/company/constants";
+import { paths } from "#/src/interfaces/paths";
 
 export function Footer() {
 	return (
@@ -7,7 +8,7 @@ export function Footer() {
 				&copy; {new Date().getFullYear()} {company.name}
 			</span>
 			<a
-				href="/privacy"
+				href={paths.privacy}
 				class="underline"
 				target="_blank"
 				rel="noopener noreferrer"
