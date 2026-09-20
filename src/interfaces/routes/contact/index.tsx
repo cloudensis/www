@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { contactEmail } from "#/src/domains/contact/constants";
 import {
 	formatContactEmail,
+	isContactType,
 	validateContact,
 } from "#/src/domains/contact/contact";
 import { verifyTurnstile } from "#/src/interfaces/lib/turnstile";
@@ -10,8 +11,9 @@ import { type ContactFormValues, emptyValues, Template } from "./template";
 export const contactRoutes = new Hono<{ Bindings: CloudflareBindings }>();
 
 contactRoutes.get("/contact", async (c) => {
-	// 事業内容からの導線: /contact?type=... でお問い合わせ種別を事前選択する
-	const values = { ...emptyValues, type: c.req.query("type") ?? "" };
+	// 事業内容からの導線: /contact?type=<key> でお問い合わせ種別を事前選択する
+	const type = c.req.query("type") ?? "";
+	const values = { ...emptyValues, type: isContactType(type) ? type : "" };
 	return c.render(
 		<Template turnstileSiteKey={c.env.TURNSTILE_SITE_KEY} values={values} />,
 	);

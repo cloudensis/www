@@ -1,11 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { formatContactEmail, validateContact } from "./contact";
+import {
+	contactTypeLabel,
+	formatContactEmail,
+	validateContact,
+} from "./contact";
 
 const validInput = {
 	name: "佐々木 太郎",
 	companyName: "株式会社サンプル",
 	email: "taro@example.com",
-	type: "その他",
+	type: "other",
 	message: "お問い合わせのテストです。",
 	consent: "on",
 };
@@ -19,7 +23,7 @@ describe("validateContact", () => {
 				name: "佐々木 太郎",
 				companyName: "株式会社サンプル",
 				email: "taro@example.com",
-				type: "その他",
+				type: "other",
 				message: "お問い合わせのテストです。",
 			},
 		});
@@ -85,12 +89,15 @@ describe("validateContact", () => {
 		},
 	);
 
-	it("定義外のお問い合わせ種別は拒否する", () => {
-		const result = validateContact({ ...validInput, type: "hack" });
-		expect(result.success).toBe(false);
-		if (result.success) return;
-		expect(result.errors).toEqual(["お問い合わせ種別を選択してください。"]);
-	});
+	it.each(["hack", "その他"])(
+		"定義外のお問い合わせ種別 %s は拒否する",
+		(type) => {
+			const result = validateContact({ ...validInput, type });
+			expect(result.success).toBe(false);
+			if (result.success) return;
+			expect(result.errors).toEqual(["お問い合わせ種別を選択してください。"]);
+		},
+	);
 
 	it("文字数上限を超える場合は拒否する", () => {
 		const result = validateContact({
@@ -107,13 +114,22 @@ describe("validateContact", () => {
 	});
 });
 
+describe("contactTypeLabel", () => {
+	it("key に対応する日本語ラベルを返す", () => {
+		expect(contactTypeLabel("system-development")).toBe(
+			"システム開発支援について",
+		);
+		expect(contactTypeLabel("other")).toBe("その他");
+	});
+});
+
 describe("formatContactEmail", () => {
 	it("件名と本文を組み立てる", () => {
 		const { subject, text } = formatContactEmail({
 			name: "佐々木 太郎",
 			companyName: "株式会社サンプル",
 			email: "taro@example.com",
-			type: "その他",
+			type: "other",
 			message: "本文",
 		});
 		expect(subject).toBe("【お問い合わせ】その他（佐々木 太郎 様）");
