@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { services } from "#/src/domains/service/constants";
 import {
 	contactTypeLabel,
+	contactTypes,
 	formatContactEmail,
 	validateContact,
 } from "./contact";
@@ -114,10 +116,22 @@ describe("validateContact", () => {
 	});
 });
 
+describe("contactTypes", () => {
+	it("事業内容から「{事業名}について」の種別を生成し、その他を加える", () => {
+		expect(contactTypes).toEqual([
+			...services.map(({ key, name }) => ({
+				key,
+				label: `${name}について`,
+			})),
+			{ key: "other", label: "その他" },
+		]);
+	});
+});
+
 describe("contactTypeLabel", () => {
 	it("key に対応する日本語ラベルを返す", () => {
-		expect(contactTypeLabel("system-development")).toBe(
-			"システム開発支援について",
+		expect(contactTypeLabel("software-development")).toBe(
+			"ソフトウェア開発支援について",
 		);
 		expect(contactTypeLabel("other")).toBe("その他");
 	});

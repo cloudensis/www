@@ -1,12 +1,17 @@
-export const contactTypes = [
-	{ key: "system-development", label: "システム開発支援について" },
-	{ key: "technical-education", label: "技術教育について" },
-	{ key: "product", label: "自社プロダクトについて" },
-	{ key: "other", label: "その他" },
-] as const;
+import { type ServiceKey, services } from "#/src/domains/service/constants";
+
+// 事業内容以外のお問い合わせ種別
+const otherContactTypes = [{ key: "other", label: "その他" }] as const;
 
 // URL やフォームの値には英語の key を使い、日本語はラベルとしてのみ扱う
-export type ContactType = (typeof contactTypes)[number]["key"];
+export type ContactType =
+	| ServiceKey
+	| (typeof otherContactTypes)[number]["key"];
+
+export const contactTypes: readonly { key: ContactType; label: string }[] = [
+	...services.map(({ key, name }) => ({ key, label: `${name}について` })),
+	...otherContactTypes,
+];
 
 export function contactTypeLabel(type: ContactType): string {
 	const contactType = contactTypes.find(({ key }) => key === type);
