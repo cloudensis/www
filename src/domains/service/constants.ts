@@ -4,7 +4,7 @@ export const services = [
 		key: "software-development",
 		name: "ソフトウェア開発支援",
 		description:
-			"Go, TypeScript, Next.jsなどのモダンな技術スタックを用いたWebアプリケーション開発、およびGoogle Cloud, AWS, Cloudflareを中心としたクラウドインフラの構築・技術支援を行います。",
+			"要件定義から設計、実装、運用まで一貫して対応します。ソフトウェアアーキテクチャ、クラウドアーキテクチャの設計、AIを活用した開発を得意としています。",
 	},
 	{
 		key: "technical-education",
