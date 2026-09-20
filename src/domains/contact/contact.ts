@@ -1,11 +1,22 @@
-export const contactTypes = [
-	"システム開発支援について",
-	"技術教育について",
-	"自社プロダクトについて",
-	"その他",
-] as const;
+import { type ServiceKey, services } from "#/src/domains/service/constants";
 
-export type ContactType = (typeof contactTypes)[number];
+// 事業内容以外のお問い合わせ種別
+const otherContactTypes = [{ key: "other", label: "その他" }] as const;
+
+// URL やフォームの値には英語の key を使い、日本語はラベルとしてのみ扱う
+export type ContactType =
+	| ServiceKey
+	| (typeof otherContactTypes)[number]["key"];
+
+export const contactTypes: readonly { key: ContactType; label: string }[] = [
+	...services.map(({ key, name }) => ({ key, label: `${name}について` })),
+	...otherContactTypes,
+];
+
+export function contactTypeLabel(type: ContactType): string {
+	const contactType = contactTypes.find(({ key }) => key === type);
+	return contactType?.label ?? type;
+}
 
 export type Contact = {
 	name: string;
@@ -48,8 +59,8 @@ function hasControlChar(value: string): boolean {
 	return controlCharPattern.test(value);
 }
 
-function isContactType(value: string): value is ContactType {
-	return (contactTypes as readonly string[]).includes(value);
+export function isContactType(value: string): value is ContactType {
+	return contactTypes.some(({ key }) => key === value);
 }
 
 export function validateContact(input: ContactInput): ValidateContactResult {
@@ -112,7 +123,8 @@ export function formatContactEmail(contact: Contact): {
 	subject: string;
 	text: string;
 } {
-	const subject = `【お問い合わせ】${contact.type}（${contact.name} 様）`;
+	const typeLabel = contactTypeLabel(contact.type);
+	const subject = `【お問い合わせ】${typeLabel}（${contact.name} 様）`;
 	const text = [
 		"Webサイトのお問い合わせフォームから、新しいお問い合わせが届きました。",
 		"",
@@ -126,7 +138,7 @@ export function formatContactEmail(contact: Contact): {
 		contact.email,
 		"",
 		"■ お問い合わせ種別",
-		contact.type,
+		typeLabel,
 		"",
 		"■ お問い合わせ内容",
 		contact.message,

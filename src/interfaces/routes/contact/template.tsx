@@ -104,9 +104,9 @@ export function Template({
 						</label>
 						<Select id="contact-type" name="contact-type" required>
 							<option value="">選択してください</option>
-							{contactTypes.map((type) => (
-								<option key={type} value={type} selected={values.type === type}>
-									{type}
+							{contactTypes.map(({ key, label }) => (
+								<option key={key} value={key} selected={values.type === key}>
+									{label}
 								</option>
 							))}
 						</Select>

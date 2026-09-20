@@ -1,5 +1,6 @@
 import { company } from "#/src/domains/company/constants";
-import { type ContactType, contactTypes } from "#/src/domains/contact/contact";
+import type { ContactType } from "#/src/domains/contact/contact";
+import { services } from "#/src/domains/service/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
 import { LinkButton } from "#/src/interfaces/components/ui/button";
 import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
@@ -39,10 +40,7 @@ function FirstView() {
 
 function ContactLink({ type }: { type: ContactType }) {
 	return (
-		<a
-			href={`/contact?type=${encodeURIComponent(type)}`}
-			class="mt-3 inline-block underline"
-		>
+		<a href={`/contact?type=${type}`} class="mt-3 inline-block underline">
 			この事業について問い合わせる
 		</a>
 	);
@@ -51,32 +49,13 @@ function ContactLink({ type }: { type: ContactType }) {
 function Services() {
 	return (
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-			<div>
-				<h3 class="mb-3 font-medium">ソフトウェア開発支援</h3>
-				<p>
-					Go, TypeScript,
-					Next.jsなどのモダンな技術スタックを用いたWebアプリケーション開発、およびGoogle
-					Cloud, AWS,
-					Cloudflareを中心としたクラウドインフラの構築・技術支援を行います。
-				</p>
-				<ContactLink type={contactTypes[0]} />
-			</div>
-
-			<div>
-				<h3 class="mb-3 font-medium">技術教育</h3>
-				<p>
-					高度IT人材の育成に向けたプログラミング・AI活用の教育カリキュラムの提供、および技術情報コンテンツの企画・制作を行います。
-				</p>
-				<ContactLink type={contactTypes[1]} />
-			</div>
-
-			<div>
-				<h3 class="mb-3 font-medium">自社プロダクト開発</h3>
-				<p>
-					Web標準技術やクラウドネイティブなアーキテクチャを活用した、自社オリジナルのWebアプリケーション・デジタルコンテンツの企画・開発を行います。
-				</p>
-				<ContactLink type={contactTypes[2]} />
-			</div>
+			{services.map(({ key, name, description }) => (
+				<div key={key}>
+					<h3 class="mb-3 font-medium">{name}</h3>
+					<p>{description}</p>
+					<ContactLink type={key} />
+				</div>
+			))}
 		</div>
 	);
 }
