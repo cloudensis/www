@@ -1,6 +1,6 @@
+import { Section } from "@cloudensis/design-system/components/layout/section";
+import { DescriptionList } from "@cloudensis/design-system/components/ui/description-list";
 import { company } from "#/src/domains/company/constants";
-import { Section } from "#/src/interfaces/components/layout/section";
-import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
 import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
