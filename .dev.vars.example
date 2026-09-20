@@ -1,1 +1,10 @@
+# ローカル開発では Turnstile のテストキーを使う。
+# wrangler.jsonc の vars で定義した本番サイトキーは localhost を許可していないため、
+# そのままだとウィジェットが「エラーコード: 110200 (Domain not allowed)」で検証に失敗する。
+# .dev.vars の値は local dev 時に wrangler.jsonc の vars より優先される。
+# @see https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+
+# 常に成功する可視ウィジェット
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+# 常に成功する secret キー
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
