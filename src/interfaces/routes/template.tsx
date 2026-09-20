@@ -1,8 +1,8 @@
+import { LinkButton } from "@cloudensis/design-system/components/ui/button";
 import { company } from "#/src/domains/company/constants";
 import type { ContactType } from "#/src/domains/contact/contact";
 import { services } from "#/src/domains/service/constants";
 import { Section } from "#/src/interfaces/components/layout/section";
-import { LinkButton } from "#/src/interfaces/components/ui/button";
 import { DescriptionList } from "#/src/interfaces/components/ui/description-list";
 import { paths } from "#/src/interfaces/paths";
 
