@@ -35,7 +35,7 @@ export const renderer = jsxRenderer(({ children }) => {
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
 			<body class="flex min-h-svh flex-col">
-				<Header homeHref={paths.home} brand={site.name} />
+				<Header homeHref={paths.home} title={site.name} />
 				<main class="flex-1">{children}</main>
 				<Footer
 					copyrightHolder={site.name}
