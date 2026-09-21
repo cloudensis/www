@@ -1,8 +1,9 @@
+import { Footer } from "@cloudensis/design-system/components/layout/footer";
+import { Header } from "@cloudensis/design-system/components/layout/header";
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link, ViteClient } from "vite-ssr-components/hono";
-import { site } from "#/src/domains/company/constants";
-import { Footer } from "#/src/interfaces/components/layout/footer";
-import { Header } from "#/src/interfaces/components/layout/header";
+import { company, site } from "#/src/domains/company/constants";
+import { paths } from "#/src/interfaces/paths";
 
 export const renderer = jsxRenderer(({ children }) => {
 	const c = useRequestContext();
@@ -34,9 +35,18 @@ export const renderer = jsxRenderer(({ children }) => {
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
 			<body class="flex min-h-svh flex-col">
-				<Header />
+				<Header homeHref={paths.home} brand={site.name} />
 				<main class="flex-1">{children}</main>
-				<Footer />
+				<Footer
+					copyrightHolder={company.name}
+					links={[
+						{
+							href: paths.privacy,
+							label: "プライバシーポリシー",
+							external: true,
+						},
+					]}
+				/>
 			</body>
 		</html>
 	);
