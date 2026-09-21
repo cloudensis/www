@@ -2,7 +2,7 @@ import { Footer } from "@cloudensis/design-system/components/layout/footer";
 import { Header } from "@cloudensis/design-system/components/layout/header";
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link, ViteClient } from "vite-ssr-components/hono";
-import { company, site } from "#/src/domains/company/constants";
+import { site } from "#/src/domains/company/constants";
 import { paths } from "#/src/interfaces/paths";
 
 export const renderer = jsxRenderer(({ children }) => {
@@ -38,7 +38,7 @@ export const renderer = jsxRenderer(({ children }) => {
 				<Header homeHref={paths.home} brand={site.name} />
 				<main class="flex-1">{children}</main>
 				<Footer
-					copyrightHolder={company.name}
+					copyrightHolder={site.name}
 					links={[
 						{
 							href: paths.privacy,
