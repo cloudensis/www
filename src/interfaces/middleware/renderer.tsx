@@ -41,6 +41,11 @@ export const renderer = jsxRenderer(({ children }) => {
 					copyrightHolder={site.name}
 					links={[
 						{
+							href: "https://github.com/cloudensis/",
+							label: "GitHub",
+							external: true,
+						},
+						{
 							href: paths.privacy,
 							label: "プライバシーポリシー",
 							external: true,
