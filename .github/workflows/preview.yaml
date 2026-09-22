@@ -1,0 +1,69 @@
+name: Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "デプロイするブランチ（未指定の場合は実行元のブランチ）"
+        required: false
+        type: string
+
+concurrency:
+  group: preview-${{ inputs.branch || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || github.ref }}
+
+      # ブランチ名からプレビューエイリアスを生成する。
+      # エイリアスは英小文字・数字・ハイフンのみ、英字始まりで、
+      # "<alias>-<worker名>" が DNS ラベル長（63 文字）に収まる必要がある。
+      - id: alias
+        env:
+          BRANCH: ${{ inputs.branch || github.ref_name }}
+        run: |
+          alias=$(printf '%s' "$BRANCH" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+          if [[ ! "$alias" =~ ^[a-z] ]]; then
+            alias="b-$alias"
+          fi
+          alias=$(printf '%s' "${alias:0:40}" | sed -E 's/-+$//')
+          echo "value=$alias" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: "npm"
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - id: wrangler
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload --preview-alias ${{ steps.alias.outputs.value }} --message "Preview (${{ steps.alias.outputs.value }})"
+
+      - env:
+          BRANCH: ${{ inputs.branch || github.ref_name }}
+          ALIAS: ${{ steps.alias.outputs.value }}
+          OUTPUT: ${{ steps.wrangler.outputs.command-output }}
+        run: |
+          {
+            echo "## Preview deployment"
+            echo
+            echo "- Branch: \`$BRANCH\`"
+            echo "- Alias: \`$ALIAS\`"
+            echo
+            echo '```'
+            echo "$OUTPUT"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
