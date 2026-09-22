@@ -22,7 +22,10 @@ registerPrivacy(app);
 
 app.notFound((c) => {
 	c.status(404);
-	return c.render(<NotFoundTemplate />);
+	return c.render(<NotFoundTemplate />, {
+		title: "ページが見つかりません",
+		noindex: true,
+	});
 });
 
 app.onError((error, c) => {
@@ -33,7 +36,10 @@ app.onError((error, c) => {
 
 	console.error("Unhandled error", error);
 	c.status(500);
-	return c.render(<ErrorTemplate />);
+	return c.render(<ErrorTemplate />, {
+		title: "エラーが発生しました",
+		noindex: true,
+	});
 });
 
 export default app;
