@@ -52,7 +52,7 @@ export function Template({
 				</div>
 			)}
 
-			<form action="/contact" method="post" class="space-y-6">
+			<form action={paths.contact} method="post" class="space-y-6">
 				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 					<div class="space-y-2">
 						<label class="block" htmlFor="name">
