@@ -6,8 +6,8 @@ import {
 	validateContact,
 } from "#/src/domains/contact/contact";
 import type { App } from "#/src/interfaces/app";
+import { isContactRateLimited } from "#/src/interfaces/lib/rate-limit";
 import { verifyTurnstile } from "#/src/interfaces/lib/turnstile";
-import { contactRateLimit } from "#/src/interfaces/middleware/rate-limit";
 import { paths } from "#/src/interfaces/paths";
 import { type ContactFormValues, emptyValues, Template } from "./template";
 
@@ -25,7 +25,6 @@ export const registerContact = (app: App) => {
 		paths.contact,
 		// ボディサイズ上限とレート制限は、body を受け取る POST にのみ掛ける
 		bodyLimit({ maxSize: 64 * 1024 }),
-		contactRateLimit,
 		async (c) => {
 			const turnstileSiteKey = c.env.TURNSTILE_SITE_KEY;
 			// フォーム以外の Content-Type で送られた場合は 400 を返す
@@ -41,6 +40,20 @@ export const registerContact = (app: App) => {
 				message: text(form, "message"),
 				consent: form.get("consent") !== null,
 			};
+
+			if (await isContactRateLimited(c)) {
+				c.status(429);
+				return c.render(
+					<Template
+						turnstileSiteKey={turnstileSiteKey}
+						values={values}
+						errors={[
+							"送信回数が上限に達しました。しばらく時間をおいて、再度お試しください。",
+						]}
+					/>,
+				);
+			}
+
 			const result = validateContact({
 				...values,
 				consent: form.get("consent"),
