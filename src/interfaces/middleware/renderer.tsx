@@ -48,7 +48,6 @@ export const renderer = jsxRenderer(({ children }) => {
 						{
 							href: paths.privacy,
 							label: "プライバシーポリシー",
-							external: true,
 						},
 					]}
 				/>
