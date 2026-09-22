@@ -78,7 +78,7 @@ export const renderer = jsxRenderer(({ children, ...props }) => {
 				<Header homeHref={paths.home} title={site.name} />
 				<main class="flex-1">{children}</main>
 				<Footer
-					copyrightHolder={site.name}
+					copyrightHolder={company.name}
 					links={[
 						{
 							href: "https://github.com/cloudensis/",
