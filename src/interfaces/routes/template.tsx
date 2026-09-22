@@ -69,7 +69,7 @@ function CompanyOverview() {
 		<DescriptionList
 			items={[
 				{ term: "会社名", details: company.name },
-				{ term: "代表", details: company.representative },
+				{ term: "代表社員", details: company.representative },
 				{
 					term: "設立",
 					details: company.establishedOn.toLocaleDateString("ja-JP", {
