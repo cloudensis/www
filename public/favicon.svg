@@ -1,6 +1,1 @@
-<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<title>favicon</title>
-<rect width="28" height="28" fill="#fff"/>
-<path d="M3.5 18.5C3.5 14 7 12.5 8.5 12.5C9 9.1 11.5 7.5 14 7.5C16.5 7.5 18.4 9 19.4 11.5C21.9 11.3 23.5 13 23.5 15C23.5 17 22 18.5 20 18.5C20 18.5 15.6667 18.5 14.5 18.5V14.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="14.5" cy="14.5" r="1.5" fill="#000"/>
-</svg>
+<svg width="42" height="24" viewBox="0 0 42 24" fill="none" xmlns="http://www.w3.org/2000/svg"><title>logo</title><path d="M1 23C1 14 8 11 11 11C12 4.2 17 1 22 1C27 1 30.8 4 32.8 9C37.8 8.6 41 12 41 16C41 20 38 23 34 23C34 23 25.3334 23 23 23V15" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="15" r="3" fill="#000"/><style>circle{fill:#000}path{stroke:#000}@media(prefers-color-scheme:dark){circle{fill:#FFF}path{stroke:#FFF}}</style></svg>
