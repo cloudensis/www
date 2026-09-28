@@ -1,7 +1,7 @@
-import { Button } from "@cloudensis/design-system/components/ui/button";
-import { Input } from "@cloudensis/design-system/components/ui/input";
-import { Select } from "@cloudensis/design-system/components/ui/select";
-import { Textarea } from "@cloudensis/design-system/components/ui/textarea";
+import { Button } from "@cloudensis/design-system/components/button";
+import { Input } from "@cloudensis/design-system/components/input";
+import { Select } from "@cloudensis/design-system/components/select";
+import { Textarea } from "@cloudensis/design-system/components/textarea";
 import { contactTypes } from "#/src/domains/contact/contact";
 import { paths } from "#/src/interfaces/paths";
 
