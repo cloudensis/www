@@ -1,4 +1,4 @@
-import { LinkButton } from "@cloudensis/design-system/components/ui/button";
+import { LinkButton } from "@cloudensis/design-system/components/button";
 import { paths } from "#/src/interfaces/paths";
 
 export function Template() {

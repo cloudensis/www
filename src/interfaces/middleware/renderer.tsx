@@ -1,8 +1,8 @@
-import { Footer } from "@cloudensis/design-system/components/layout/footer";
-import { Header } from "@cloudensis/design-system/components/layout/header";
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link, ViteClient } from "vite-ssr-components/hono";
 import { company, site } from "#/src/domains/company/constants";
+import { Footer } from "#/src/interfaces/components/footer";
+import { Header } from "#/src/interfaces/components/header";
 import { paths } from "#/src/interfaces/paths";
 
 type PageMeta = {
@@ -75,22 +75,9 @@ export const renderer = jsxRenderer(({ children, ...props }) => {
 				<Link href="/src/interfaces/styles/global.css" rel="stylesheet" />
 			</head>
 			<body class="flex min-h-svh flex-col">
-				<Header homeHref={paths.home} title={site.name} />
+				<Header />
 				<main class="flex-1">{children}</main>
-				<Footer
-					copyrightHolder={company.name}
-					links={[
-						{
-							href: "https://github.com/cloudensis/",
-							label: "GitHub",
-							external: true,
-						},
-						{
-							href: paths.privacy,
-							label: "プライバシーポリシー",
-						},
-					]}
-				/>
+				<Footer />
 			</body>
 		</html>
 	);
