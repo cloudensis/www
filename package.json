@@ -13,7 +13,7 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@cloudensis/design-system": "^0.12.0",
+		"@cloudensis/design-system": "^0.14.0",
 		"hono": "^4.13.8"
 	},
 	"devDependencies": {
