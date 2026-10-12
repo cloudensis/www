@@ -3,6 +3,7 @@
 	"name": "cloudensis",
 	"compatibility_date": "2026-09-18",
 	"main": "./src/index.tsx",
+	"preview_urls": true,
 	"send_email": [{ "name": "EMAIL" }],
 	"vars": {
 		"TURNSTILE_SITE_KEY": "0x4AAAAAAE74sVfBuWWTb_at"
