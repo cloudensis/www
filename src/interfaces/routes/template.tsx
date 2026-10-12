@@ -26,7 +26,7 @@ function FirstView() {
 			<h1 class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
 				よりシンプルで
 				<br />
-				より価値を生むソフトウェア
+				より価値を生むソフトウェア（Preview テスト）
 			</h1>
 			<p class="my-6 max-w-2xl text-sm leading-normal">
 				AIによって、ソフトウェアは誰でも作れるようになりました。
