@@ -18,14 +18,14 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
-		"@cloudflare/vite-plugin": "^1.63.0",
+		"@cloudflare/vite-plugin": "^1.63.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.3",
 		"vite-ssr-components": "^0.8.0",
 		"vitest": "^5.0.3",
-		"wrangler": "^4.148.0"
+		"wrangler": "^4.149.0"
 	},
 	"imports": {
 		"#/*": [
