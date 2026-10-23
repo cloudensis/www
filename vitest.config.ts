@@ -5,5 +5,7 @@ export default defineConfig({
 	resolve: { alias: { "#/": "/" } },
 	test: {
 		include: ["src/**/*.test.ts"],
+		// テストが1件もない状態でも CI を失敗させない
+		passWithNoTests: true,
 	},
 });
