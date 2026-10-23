@@ -22,13 +22,13 @@ app.notFound((c) => {
 	});
 });
 
-app.onError((error, c) => {
-	// CSRF の 403 など、意図して投げられた HTTP エラーはそのまま返す
-	if (error instanceof HTTPException) {
-		return error.getResponse();
+app.onError(async (c, next) => {
+	// CSRF の 403 など、意図して投げられた HTTP エラーは組み込みのハンドラーでそのまま返す
+	if (c.error instanceof HTTPException) {
+		return next();
 	}
 
-	console.error("Unhandled error", error);
+	console.error("Unhandled error", c.error);
 	c.status(500);
 	return c.render(<ErrorTemplate />, {
 		title: "エラーが発生しました",
