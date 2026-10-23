@@ -9,8 +9,7 @@
 		"cf-typegen": "cf workers types",
 		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",
-		"format": "biome check --write --unsafe",
-		"test": "vitest run"
+		"format": "biome check --write --unsafe"
 	},
 	"dependencies": {
 		"@cloudensis/design-system": "^0.14.3",
@@ -24,8 +23,7 @@
 		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.4",
-		"vite-ssr-components": "^0.8.0",
-		"vitest": "^5.0.5"
+		"vite-ssr-components": "^0.8.0"
 	},
 	"imports": {
 		"#/*": [
