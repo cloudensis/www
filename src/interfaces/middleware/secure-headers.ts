@@ -8,10 +8,8 @@ import { secureHeaders } from "hono/secure-headers";
 export const securityHeaders = secureHeaders({
 	contentSecurityPolicy: {
 		defaultSrc: ["'self'"],
-		// Turnstile のウィジェット
-		scriptSrc: ["'self'", "https://challenges.cloudflare.com"],
-		frameSrc: ["https://challenges.cloudflare.com"],
-		// Tailwind の開発時インジェクションと Turnstile のインラインスタイル
+		scriptSrc: ["'self'"],
+		// Tailwind の開発時インジェクション
 		styleSrc: ["'self'", "'unsafe-inline'"],
 		imgSrc: ["'self'", "data:"],
 		fontSrc: ["'self'"],

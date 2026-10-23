@@ -1,4 +1,4 @@
-// 事業内容の一覧。トップページの表示と、お問い合わせ種別の生成元を兼ねる。
+// 事業内容の一覧。トップページに表示する。
 export const services = [
 	{
 		key: "software-development",
@@ -19,8 +19,3 @@ export const services = [
 			"Web標準技術やクラウドネイティブなアーキテクチャを活用した、自社オリジナルのWebアプリケーション・デジタルコンテンツの企画・開発を行います。",
 	},
 ] as const;
-
-export type Service = (typeof services)[number];
-
-// URL やフォームの値に使う英語の key
-export type ServiceKey = Service["key"];

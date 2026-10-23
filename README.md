@@ -6,6 +6,5 @@ Cloudensis合同会社のコーポレートサイト
 
 ```sh
 npm ci
-cp .dev.vars.example .dev.vars
 npm run dev
 ```

@@ -1,9 +1,8 @@
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Link, ViteClient } from "vite-ssr-components/hono";
-import { company, site } from "#/src/domains/company/constants";
+import { site } from "#/src/domains/company/constants";
 import { Footer } from "#/src/interfaces/components/footer";
 import { Header } from "#/src/interfaces/components/header";
-import { paths } from "#/src/interfaces/paths";
 
 type PageMeta = {
 	/** ページ名。`{ページ名} | {サイト名}` の形でタイトルに使う。省略時はサイト名のみ。 */
@@ -24,23 +23,9 @@ declare module "hono" {
 	}
 }
 
-// 通常のページのメタ情報。404 やエラー画面は c.render の第2引数で渡す。
-const pageMeta: Record<string, PageMeta> = {
-	[paths.contact]: {
-		title: "お問い合わせ",
-		description:
-			"cloudensisへのお問い合わせはこちらから。ソフトウェア開発支援、技術教育、自社プロダクト開発に関するご相談を受け付けています。",
-	},
-	[paths.contactComplete]: { title: "お問い合わせ完了", noindex: true },
-	[paths.privacy]: {
-		title: "プライバシーポリシー",
-		description: `${company.name}のプライバシーポリシー（個人情報の取扱いについて）です。`,
-	},
-};
-
 export const renderer = jsxRenderer(({ children, ...props }) => {
 	const c = useRequestContext();
-	const meta: PageMeta = { ...pageMeta[c.req.path], ...props };
+	const meta: PageMeta = props;
 	const title = meta.title ? `${meta.title} | ${site.name}` : site.name;
 	const description = meta.description ?? site.description;
 	const canonicalUrl = new URL(c.req.path, site.url).toString();
