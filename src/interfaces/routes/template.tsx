@@ -1,10 +1,7 @@
-import { LinkButton } from "@cloudensis/design-system/components/button";
 import { company } from "#/src/domains/company/constants";
-import type { ContactType } from "#/src/domains/contact/contact";
 import { services } from "#/src/domains/service/constants";
 import { DescriptionList } from "#/src/interfaces/components/description-list";
 import { Section } from "#/src/interfaces/components/section";
-import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
 	return (
@@ -34,19 +31,7 @@ function FirstView() {
 				よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
 				それを見極める力が、エンジニアの価値だと考えています。
 			</p>
-			<LinkButton href={paths.contact}>お問い合わせ</LinkButton>
 		</div>
-	);
-}
-
-function ContactLink({ type }: { type: ContactType }) {
-	return (
-		<a
-			href={`${paths.contact}?type=${type}`}
-			class="mt-3 inline-block underline"
-		>
-			この事業について問い合わせる
-		</a>
 	);
 }
 
@@ -57,7 +42,6 @@ function Services() {
 				<div key={key}>
 					<h3 class="mb-3 font-medium">{name}</h3>
 					<p>{description}</p>
-					<ContactLink type={key} />
 				</div>
 			))}
 		</div>
@@ -69,7 +53,6 @@ function CompanyOverview() {
 		<DescriptionList
 			items={[
 				{ term: "会社名", details: company.name },
-				{ term: "代表社員", details: company.representative },
 				{
 					term: "設立",
 					details: company.establishedOn.toLocaleDateString("ja-JP", {

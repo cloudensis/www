@@ -4,8 +4,6 @@ import { HTTPException } from "hono/http-exception";
 import type { Env } from "#/src/interfaces/app";
 import { renderer } from "#/src/interfaces/middleware/renderer";
 import { securityHeaders } from "#/src/interfaces/middleware/secure-headers";
-import { registerContactComplete } from "#/src/interfaces/routes/contact/complete/index";
-import { registerContact } from "#/src/interfaces/routes/contact/index";
 import { Template as ErrorTemplate } from "#/src/interfaces/routes/error/template";
 import { registerHome } from "#/src/interfaces/routes/index";
 import { Template as NotFoundTemplate } from "#/src/interfaces/routes/not-found/template";
@@ -16,8 +14,6 @@ const app = new Hono<Env>();
 app.use(securityHeaders, renderer, csrf());
 
 registerHome(app);
-registerContact(app);
-registerContactComplete(app);
 registerPrivacy(app);
 
 app.notFound((c) => {

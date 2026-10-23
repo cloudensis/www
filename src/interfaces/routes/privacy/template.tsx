@@ -1,7 +1,7 @@
 import { company } from "#/src/domains/company/constants";
+import { contactEmail } from "#/src/domains/contact/constants";
 import { DescriptionList } from "#/src/interfaces/components/description-list";
 import { Section } from "#/src/interfaces/components/section";
-import { paths } from "#/src/interfaces/paths";
 
 export function Template() {
 	return (
@@ -13,25 +13,21 @@ export function Template() {
 					{company.name}
 					（以下「当社」といいます）は、当社が運営するウェブサイト（以下「本サイト」といいます）において取得する個人情報の取扱いについて、個人情報の保護に関する法律（以下「個人情報保護法」といいます）その他の関連法令およびガイドラインを遵守し、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。
 				</p>
-				<p>
-					本サイトのお問い合わせフォームをご利用いただく際は、本ポリシーの内容をご確認のうえ、ご同意いただく必要があります。
-				</p>
 			</div>
 
 			<Section id="collected-information" title="1. 取得する個人情報">
 				<div class="space-y-4">
 					<p>
-						当社は、本サイトのお問い合わせフォームを通じて、お客様から以下の情報を取得します。
+						当社は、お客様から電子メール等でお問い合わせをいただいた際に、以下の情報を取得します。
 					</p>
 					<ul class="list-disc space-y-1 pl-6">
 						<li>お名前</li>
 						<li>会社名</li>
 						<li>メールアドレス</li>
-						<li>お問い合わせ種別</li>
-						<li>お問い合わせ内容</li>
+						<li>お問い合わせ内容に含まれる情報</li>
 					</ul>
 					<p>
-						当社は、偽りその他不正の手段によって個人情報を取得することはありません。なお、上記の情報をご入力いただけない場合、お問い合わせにお答えできないことがあります。
+						当社は、偽りその他不正の手段によって個人情報を取得することはありません。なお、上記の情報をご提供いただけない場合、お問い合わせにお答えできないことがあります。
 					</p>
 					<p>
 						また、本サイトへのアクセスに際して、IPアドレス、ブラウザの種類、アクセス日時、閲覧したページ等のアクセスログを、当社が利用するホスティング事業者のサービス上に記録します。
@@ -52,7 +48,7 @@ export function Template() {
 						</li>
 						<li>お問い合わせに関する記録を保管し、対応履歴を管理するため</li>
 						<li>
-							本サイトの安全な運営、不正アクセスや不正な送信の防止、障害の調査・対応のため
+							本サイトの安全な運営、不正アクセスの防止、障害の調査・対応のため
 						</li>
 					</ul>
 					<p>
@@ -87,7 +83,7 @@ export function Template() {
 						当社は、利用目的の達成に必要な範囲内において、個人情報の取扱いの全部または一部を外部の事業者（メール配信サービスやクラウドサービスの提供事業者を含みます）に委託することがあります。この場合、当社は委託先を適切に選定し、委託先において個人情報の安全管理が図られるよう、必要かつ適切な監督を行います。
 					</p>
 					<p>
-						当社は、本サイトのホスティングおよびお問い合わせメールの送信に、Cloudflare,
+						当社は、本サイトのホスティングに、Cloudflare,
 						Inc.（アメリカ合衆国）のサービスを利用しており、同社に個人情報の取扱いを委託しています。同社は、個人情報保護委員会規則で定める基準に適合する体制を整備しており、当社は個人情報保護法第28条の定めに従い、必要な措置を講じます。
 					</p>
 					<p>
@@ -130,11 +126,8 @@ export function Template() {
 			<Section id="cookies" title="7. Cookie・外部サービスの利用">
 				<div class="space-y-4">
 					<p>
-						本サイトのお問い合わせフォームでは、不正な自動送信を防ぐため、Cloudflare,
-						Inc.（米国）が提供するボット判定サービス「Cloudflare
-						Turnstile」を利用しています。Turnstileは判定のために、IPアドレスやブラウザに関する情報を同社に送信し、Cookieを使用することがあります。詳細は同社のプライバシーポリシーをご確認ください。
+						本サイトでは、Cookieおよびアクセス解析ツールは使用していません。
 					</p>
-					<p>本サイトでは、アクセス解析ツールは使用していません。</p>
 				</div>
 			</Section>
 
@@ -158,7 +151,6 @@ export function Template() {
 					<DescriptionList
 						items={[
 							{ term: "事業者名", details: company.name },
-							{ term: "代表者", details: company.representative },
 							{
 								term: "所在地",
 								details: (
@@ -169,19 +161,16 @@ export function Template() {
 								),
 							},
 							{
-								term: "受付方法",
+								term: "メールアドレス",
 								details: (
-									<>
-										本サイトの
-										<a href={paths.contact} class="underline">
-											お問い合わせフォーム
-										</a>
-										よりご連絡ください
-									</>
+									<a href={`mailto:${contactEmail}`} class="underline">
+										{contactEmail}
+									</a>
 								),
 							},
 						]}
 					/>
+					<p>代表者の氏名については、ご請求に応じて遅滞なく回答いたします。</p>
 				</div>
 			</Section>
 
@@ -194,7 +183,7 @@ export function Template() {
 			<p>
 				制定日：2026年9月17日
 				<br />
-				最終改定日：2026年9月22日
+				最終改定日：2026年10月23日
 				<br />
 				{company.name}
 			</p>

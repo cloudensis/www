@@ -1,4 +1,1 @@
-export const contactEmail = {
-	from: "noreply@cloudensis.com",
-	to: "contact@cloudensis.com",
-} as const;
+export const contactEmail = "contact@cloudensis.com";
