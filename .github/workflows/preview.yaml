@@ -19,7 +19,6 @@ jobs:
 
       - run: npm ci
 
-      # Preview 名は実行ブランチ名になる
       - run: npx cf previews deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
