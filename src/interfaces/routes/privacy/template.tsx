@@ -1,5 +1,4 @@
 import { company } from "#/src/domains/company/constants";
-import { contactEmail } from "#/src/domains/contact/constants";
 import { DescriptionList } from "#/src/interfaces/components/description-list";
 import { Section } from "#/src/interfaces/components/section";
 
@@ -161,12 +160,8 @@ export function Template() {
 								),
 							},
 							{
-								term: "メールアドレス",
-								details: (
-									<a href={`mailto:${contactEmail}`} class="underline">
-										{contactEmail}
-									</a>
-								),
+								term: "受付方法",
+								details: "上記所在地あての郵送にてご連絡ください",
 							},
 						]}
 					/>
