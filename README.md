@@ -1,6 +1,6 @@
 # cloudensis.com
 
-Cloudensis合同会社のコーポレートサイト。
+Cloudensis合同会社のコーポレートサイト
 
 ## ローカル環境構築
 
