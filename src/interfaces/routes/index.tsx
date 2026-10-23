@@ -1,7 +1,9 @@
-import type { App } from "#/src/interfaces/app";
+import { Layout } from "#/src/interfaces/components/layout";
 import { paths } from "#/src/interfaces/paths";
 import { Template } from "./template";
 
-export const registerHome = (app: App) => {
-	app.get(paths.home, (c) => c.render(<Template />));
-};
+export default (
+	<Layout path={paths.home}>
+		<Template />
+	</Layout>
+);

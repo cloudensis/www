@@ -1,16 +1,19 @@
 import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-import ssrPlugin from "vite-ssr-components/plugin";
+import { staticPages } from "./plugins/static-pages.ts";
 
 export default defineConfig({
 	resolve: { alias: { "#/": "/" } },
 	plugins: [
 		cloudflare(),
 		tailwindcss(),
-		// Tailwind の Scanner が addWatchFile で登録するファイルが client の
-		// モジュールグラフに載るため、morph 方式の SSR ホットリロードは発火しない。
-		// フルリロード方式にして確実に反映させる。
-		ssrPlugin({ hotReload: { morph: false } }),
+		staticPages({
+			"index.html": "src/interfaces/routes/index.tsx",
+			"404.html": "src/interfaces/routes/not-found/index.tsx",
+		}),
 	],
+	build: {
+		rollupOptions: { input: ["index.html", "404.html"] },
+	},
 });
