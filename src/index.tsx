@@ -7,14 +7,12 @@ import { securityHeaders } from "#/src/interfaces/middleware/secure-headers";
 import { Template as ErrorTemplate } from "#/src/interfaces/routes/error/template";
 import { registerHome } from "#/src/interfaces/routes/index";
 import { Template as NotFoundTemplate } from "#/src/interfaces/routes/not-found/template";
-import { registerPrivacy } from "#/src/interfaces/routes/privacy/index";
 
 const app = new Hono<Env>();
 
 app.use(securityHeaders, renderer, csrf());
 
 registerHome(app);
-registerPrivacy(app);
 
 app.notFound((c) => {
 	c.status(404);

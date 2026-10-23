@@ -7,5 +7,4 @@
  */
 export const paths = {
 	home: "/",
-	privacy: "/privacy",
 } as const;

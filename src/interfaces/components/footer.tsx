@@ -1,5 +1,4 @@
 import { company } from "#/src/domains/company/constants";
-import { paths } from "#/src/interfaces/paths";
 
 export function Footer() {
 	return (
@@ -15,9 +14,6 @@ export function Footer() {
 					rel="noopener noreferrer"
 				>
 					GitHub
-				</a>
-				<a href={paths.privacy} class="underline">
-					プライバシーポリシー
 				</a>
 			</nav>
 		</footer>
