@@ -15,6 +15,14 @@ export function Footer() {
 				>
 					GitHub
 				</a>
+				<a
+					href="https://x.com/cloudensis/"
+					class="underline"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					X
+				</a>
 			</nav>
 		</footer>
 	);
