@@ -33,7 +33,7 @@ function postContact(
 	return app.request(
 		`${origin}/contact`,
 		{ method: "POST", body, headers },
-		env as unknown as CloudflareBindings,
+		env as unknown as Cloudflare.Env,
 	);
 }
 
@@ -48,7 +48,7 @@ describe("GET /contact", () => {
 		const res = await app.request(
 			`${origin}/contact?type=technical-education`,
 			{},
-			createEnv() as unknown as CloudflareBindings,
+			createEnv() as unknown as Cloudflare.Env,
 		);
 		expect(res.status).toBe(200);
 		expect(await res.text()).toMatch(
@@ -60,7 +60,7 @@ describe("GET /contact", () => {
 		const res = await app.request(
 			`${origin}/contact?type=hack`,
 			{},
-			createEnv() as unknown as CloudflareBindings,
+			createEnv() as unknown as Cloudflare.Env,
 		);
 		expect(res.status).toBe(200);
 		expect(await res.text()).not.toContain('selected=""');

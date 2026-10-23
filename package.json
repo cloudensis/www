@@ -3,11 +3,11 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
+		"dev": "cf dev",
+		"build": "cf build",
 		"preview": "$npm_execpath run build && vite preview",
-		"cf-typegen": "wrangler types --env-interface CloudflareBindings --strict-vars false",
-		"typecheck": "tsc --noEmit",
+		"cf-typegen": "cf workers types",
+		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",
 		"format": "biome check --write --unsafe",
 		"test": "vitest run"
@@ -18,14 +18,14 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
-		"@cloudflare/vite-plugin": "^1.64.0",
+		"@cloudflare/vite-plugin": "2.0.0-beta.v.2",
 		"@tailwindcss/vite": "^4.3.3",
+		"cf": "1.0.0-beta.18",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.4",
 		"vite-ssr-components": "^0.8.0",
-		"vitest": "^5.0.5",
-		"wrangler": "^4.151.1"
+		"vitest": "^5.0.5"
 	},
 	"imports": {
 		"#/*": [
