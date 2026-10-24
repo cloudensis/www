@@ -1,7 +1,7 @@
 import { LogoLockup } from "@cloudensis/design-system/brand/cloudensis/logo-lockup";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { secureHeaders } from "hono/secure-headers";
-import { Link, ViteClient } from "vite-ssr-components/hono";
+import { ViteClient } from "vite-ssr-components/hono";
 import { company, site } from "./const";
 
 /**
@@ -50,7 +50,10 @@ export const renderer = jsxRenderer(({ children }) => {
 				<link rel="apple-touch-icon" href="/logo.png" />
 
 				<ViteClient />
-				<Link href="/src/global.css" rel="stylesheet" />
+				<link
+					href={import.meta.env.DEV ? "/src/global.css" : "/assets/global.css"}
+					rel="stylesheet"
+				/>
 			</head>
 			<body class="flex min-h-svh flex-col">
 				<Header />
