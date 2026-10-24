@@ -1,5 +1,4 @@
 import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
-import { ViteClient } from "vite-ssr-components/hono";
 import { site } from "#/src/domains/company/constants";
 import { Footer } from "#/src/interfaces/components/footer";
 import { Header } from "#/src/interfaces/components/header";
@@ -56,11 +55,6 @@ export const renderer = jsxRenderer(({ children, ...props }) => {
 				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 				<link rel="apple-touch-icon" href="/logo.png" />
 
-				{
-					// ViteClient は node_modules から読み込まれ import.meta.env を参照できず、
-					// SSG のビルド時にも開発用のスクリプトを出力してしまうため、ここで判定する
-					import.meta.env.DEV && <ViteClient />
-				}
 				<link
 					href={
 						// 本番は vite.config.ts で固定のファイル名にしてビルドした CSS を参照する
