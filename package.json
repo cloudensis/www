@@ -4,7 +4,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "cf dev",
-		"build": "cf build",
+		"build": "npm run build:ssg && cf build",
+		"build:ssg": "vite build --mode ssg",
 		"cf-typegen": "cf workers types",
 		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",
@@ -17,6 +18,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
 		"@cloudflare/vite-plugin": "2.0.0-beta.v.3",
+		"@hono/vite-ssg": "^0.3.3",
 		"@tailwindcss/vite": "^4.3.3",
 		"cf": "1.0.0-beta.20",
 		"tailwindcss": "^4.3.3",

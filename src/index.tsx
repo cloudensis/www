@@ -1,12 +1,16 @@
 import { Hono } from "hono";
 import { renderer, securityHeaders } from "./middleware";
-import { ErrorTemplate, HomeTemplate } from "./template";
+import ssg from "./ssg";
+import { ErrorTemplate } from "./template";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
 app.use(securityHeaders, renderer);
 
-app.get("/", (c) => c.render(<HomeTemplate />));
+// SSG 対象のページは本番では静的アセットとして配信されるため、開発時のみ Worker で描画する
+if (import.meta.env.DEV) {
+	app.route("/", ssg);
+}
 
 app.notFound((c) => {
 	c.status(404);
