@@ -8,10 +8,7 @@
 		"lib": ["ESNext"],
 		"types": ["vite/client"],
 		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx",
-		"paths": {
-			"#/*": ["./*"]
-		}
+		"jsxImportSource": "hono/jsx"
 	},
 	"include": ["**/*", ".cloudflare/types"]
 }

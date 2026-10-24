@@ -29,12 +29,5 @@
 		"@cloudensis/design-system": {
 			"hono": "$hono"
 		}
-	},
-	"imports": {
-		"#/*": [
-			"./*.ts",
-			"./*.tsx",
-			"./*"
-		]
 	}
 }
