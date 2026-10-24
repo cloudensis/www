@@ -7,7 +7,7 @@ export const company = {
 
 export const site = {
 	name: "cloudensis",
-	url: "https://cloudensis.com",
+	url: "https://cloudensis.com/",
 	description:
 		"cloudensisは、ソフトウェア開発支援、技術教育、自社プロダクト開発を行うソフトウェア企業です。",
 } as const;
