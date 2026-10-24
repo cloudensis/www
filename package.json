@@ -19,11 +19,11 @@
 		"@biomejs/biome": "^2.5.15",
 		"@cloudflare/vite-plugin": "2.0.0-beta.v.3",
 		"@tailwindcss/vite": "^4.3.3",
-		"cf": "1.0.0-beta.19",
+		"cf": "1.0.0-beta.20",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.4",
-		"vite-ssr-components": "^0.8.0"
+		"vite-ssr-components": "^0.9.0"
 	},
 	"overrides": {
 		"@cloudensis/design-system": {
