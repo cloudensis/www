@@ -4,7 +4,7 @@ import { Hono } from "hono";
 import { csrf } from "hono/csrf";
 import { HTTPException } from "hono/http-exception";
 import { type Child, Fragment } from "hono/jsx";
-import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
+import { jsxRenderer } from "hono/jsx-renderer";
 import { secureHeaders } from "hono/secure-headers";
 import { Link, ViteClient } from "vite-ssr-components/hono";
 
@@ -43,25 +43,6 @@ const services = [
 			"Web標準技術やクラウドネイティブなアーキテクチャを活用した、自社オリジナルのWebアプリケーション・デジタルコンテンツの企画・開発を行います。",
 	},
 ] as const;
-
-type PageMeta = {
-	/** ページ名。`{ページ名} | {サイト名}` の形でタイトルに使う。省略時はサイト名のみ。 */
-	title?: string;
-	/** 省略時はサイト共通の説明文を使う。 */
-	description?: string;
-	/** 404 やエラー画面など、検索結果に載せないページで true にする。 */
-	noindex?: boolean;
-};
-
-declare module "hono" {
-	interface ContextRenderer {
-		// biome-ignore lint/style/useShorthandFunctionType: ContextRenderer は interface の宣言マージで拡張する
-		(
-			content: string | Promise<string>,
-			meta?: PageMeta,
-		): Response | Promise<Response>;
-	}
-}
 
 function Header() {
 	return (
@@ -201,12 +182,7 @@ function MessagePage({ title, message }: { title: string; message: string }) {
 	);
 }
 
-const renderer = jsxRenderer(({ children, ...props }) => {
-	const c = useRequestContext();
-	const meta: PageMeta = props;
-	const title = meta.title ? `${meta.title} | ${site.name}` : site.name;
-	const description = meta.description ?? site.description;
-	const canonicalUrl = new URL(c.req.path, site.url).toString();
+const renderer = jsxRenderer(({ children }) => {
 	const ogImageUrl = new URL("/ogp.png", site.url).toString();
 
 	return (
@@ -214,19 +190,15 @@ const renderer = jsxRenderer(({ children, ...props }) => {
 			<head>
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>{title}</title>
-				<meta name="description" content={description} />
-				{meta.noindex ? (
-					<meta name="robots" content="noindex" />
-				) : (
-					<link rel="canonical" href={canonicalUrl} />
-				)}
+				<title>{site.name}</title>
+				<meta name="description" content={site.description} />
+				<link rel="canonical" href={site.url} />
 
 				<meta property="og:type" content="website" />
 				<meta property="og:site_name" content={site.name} />
-				<meta property="og:title" content={title} />
-				<meta property="og:description" content={description} />
-				{!meta.noindex && <meta property="og:url" content={canonicalUrl} />}
+				<meta property="og:title" content={site.name} />
+				<meta property="og:description" content={site.description} />
+				<meta property="og:url" content={site.url} />
 				<meta property="og:image" content={ogImageUrl} />
 				<meta property="og:locale" content="ja_JP" />
 				<meta name="twitter:card" content="summary_large_image" />
@@ -280,7 +252,6 @@ app.notFound((c) => {
 			title="ページが見つかりません"
 			message="お探しのページは移動または削除された可能性があります。URLをご確認ください。"
 		/>,
-		{ title: "ページが見つかりません", noindex: true },
 	);
 });
 
@@ -297,7 +268,6 @@ app.onError(async (c, next) => {
 			title="エラーが発生しました"
 			message="申し訳ありません。処理中に問題が発生しました。時間をおいて、再度お試しください。"
 		/>,
-		{ title: "エラーが発生しました", noindex: true },
 	);
 });
 
