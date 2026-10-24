@@ -1,5 +1,5 @@
-# public/ の静的アセットは Worker を経由せずに配信されるため、
-# Hono の secureHeaders（src/middleware.tsx）が付与されない。
+# public/ の静的アセット（SSG で生成した HTML を含む）は Worker を経由せずに
+# 配信されるため、Hono の secureHeaders（src/middleware.tsx）が付与されない。
 # 同等のヘッダーをここで付与する。
 /*
   Strict-Transport-Security: max-age=15552000; includeSubDomains

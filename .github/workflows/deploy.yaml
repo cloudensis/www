@@ -25,6 +25,11 @@ jobs:
 
       - run: npm ci
 
+      # 静的ページ（public/index.html と public/assets/）を先に生成する。
+      # cf は内部で Vite の Worker ビルドのみを行い、public/ をアセットとして
+      # 取り込むため、SSG ビルドはこのステップで済ませておく必要がある。
+      - run: npm run build:ssg
+
       - run: npx cf deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

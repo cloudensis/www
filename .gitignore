@@ -1,3 +1,5 @@
 node_modules
 .cloudflare
 .DS_Store
+public/assets
+public/**/*.html

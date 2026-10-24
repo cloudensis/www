@@ -1,12 +1,18 @@
 import { Hono } from "hono";
 import { renderer, securityHeaders } from "./middleware";
-import { ErrorTemplate, HomeTemplate } from "./template";
+import ssg from "./ssg";
+import { ErrorTemplate } from "./template";
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
 app.use(securityHeaders, renderer);
 
-app.get("/", (c) => c.render(<HomeTemplate />));
+// 静的ページ（src/ssg.tsx）はビルド時に HTML を生成し、
+// Cloudflare の静的アセットとして Worker を経由せずに配信する。
+// 開発時はアセットが存在しないため、Worker 側で同じルートを処理する。
+if (import.meta.env.DEV) {
+	app.route("/", ssg);
+}
 
 app.notFound((c) => {
 	c.status(404);

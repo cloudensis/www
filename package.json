@@ -3,8 +3,10 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "cf dev",
-		"build": "cf build",
+		"clean": "rm -rf public/index.html public/assets",
+		"dev": "npm run clean && cf dev",
+		"build:ssg": "npm run clean && vite build --mode ssg",
+		"build": "npm run build:ssg && cf build",
 		"cf-typegen": "cf workers types",
 		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",
@@ -17,6 +19,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
 		"@cloudflare/vite-plugin": "2.0.0-beta.v.3",
+		"@hono/vite-ssg": "^0.3.3",
 		"@tailwindcss/vite": "^4.3.3",
 		"cf": "1.0.0-beta.20",
 		"tailwindcss": "^4.3.3",

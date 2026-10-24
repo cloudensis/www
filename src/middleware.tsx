@@ -1,8 +1,17 @@
 import { LogoLockup } from "@cloudensis/design-system/brand/cloudensis/logo-lockup";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { secureHeaders } from "hono/secure-headers";
-import { Link, ViteClient } from "vite-ssr-components/hono";
+import { ViteClient } from "vite-ssr-components/hono";
 import { company, site } from "./const";
+
+/**
+ * スタイルシートの URL。
+ * ビルド時は SSG ビルドが public/assets/global.css を固定名で出力する。
+ * 開発時は Vite dev server がソースをそのまま配信する。
+ */
+const stylesheetHref = import.meta.env.DEV
+	? "/src/global.css"
+	: "/assets/global.css";
 
 /**
  * 全レスポンスにセキュリティヘッダーを付与する。
@@ -49,8 +58,10 @@ export const renderer = jsxRenderer(({ children }) => {
 				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 				<link rel="apple-touch-icon" href="/logo.png" />
 
-				<ViteClient />
-				<Link href="/src/global.css" rel="stylesheet" />
+				{/* ViteClient 自身の本番判定は node_modules 側で import.meta.env が
+				    置換されず効かないため、呼び出し側で開発時に限定する。 */}
+				{import.meta.env.DEV && <ViteClient />}
+				<link href={stylesheetHref} rel="stylesheet" />
 			</head>
 			<body class="flex min-h-svh flex-col">
 				<Header />
