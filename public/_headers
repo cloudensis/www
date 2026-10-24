@@ -1,5 +1,5 @@
 # public/ の静的アセットは Worker を経由せずに配信されるため、
-# Hono の secureHeaders（src/interfaces/middleware/secure-headers.ts）が付与されない。
+# Hono の secureHeaders（src/index.tsx）が付与されない。
 # 同等のヘッダーをここで付与する。
 /*
   Strict-Transport-Security: max-age=15552000; includeSubDomains
