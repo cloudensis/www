@@ -61,8 +61,15 @@ export const renderer = jsxRenderer(({ children, ...props }) => {
 					// SSG のビルド時にも開発用のスクリプトを出力してしまうため、ここで判定する
 					import.meta.env.DEV && <ViteClient />
 				}
-				{/* ビルド時は vite.config.ts でハッシュ付きのファイルに置き換える */}
-				<link href="/src/interfaces/styles/global.css" rel="stylesheet" />
+				<link
+					href={
+						// 本番は vite.config.ts で固定のファイル名にしてビルドした CSS を参照する
+						import.meta.env.DEV
+							? "/src/interfaces/styles/global.css"
+							: "/assets/global.css"
+					}
+					rel="stylesheet"
+				/>
 			</head>
 			<body class="flex min-h-svh flex-col">
 				<Header />
