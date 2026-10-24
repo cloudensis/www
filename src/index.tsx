@@ -1,7 +1,6 @@
 import { LogoLockup } from "@cloudensis/design-system/brand/cloudensis/logo-lockup";
 import { LinkButton } from "@cloudensis/design-system/components/button";
 import { Hono } from "hono";
-import { csrf } from "hono/csrf";
 import { HTTPException } from "hono/http-exception";
 import { type Child, Fragment } from "hono/jsx";
 import { jsxRenderer } from "hono/jsx-renderer";
@@ -47,9 +46,7 @@ const services = [
 function Header() {
 	return (
 		<header class="sticky top-0 z-10 flex h-14 items-center border-default border-b bg-default px-4 lg:px-6">
-			<a href="/" class="flex items-baseline gap-2">
-				<LogoLockup class="text-lg" />
-			</a>
+			<LogoLockup class="text-lg" />
 		</header>
 	);
 }
@@ -123,7 +120,7 @@ function HomePage() {
 	return (
 		<div class="mx-auto max-w-5xl space-y-20 px-4 py-12 lg:px-8">
 			<div>
-				<h1 class="font-medium text-neutral-800 text-xl leading-normal lg:text-4xl">
+				<h1 class="font-medium text-xl leading-normal lg:text-4xl">
 					よりシンプルで
 					<br />
 					より価値を生むソフトウェア
@@ -241,7 +238,7 @@ const securityHeaders = secureHeaders({
 
 const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
-app.use(securityHeaders, renderer, csrf());
+app.use(securityHeaders, renderer);
 
 app.get("/", (c) => c.render(<HomePage />));
 
@@ -256,7 +253,7 @@ app.notFound((c) => {
 });
 
 app.onError(async (c, next) => {
-	// CSRF の 403 など、意図して投げられた HTTP エラーは組み込みのハンドラーでそのまま返す
+	// 意図して投げられた HTTP エラーは組み込みのハンドラーでそのまま返す
 	if (c.error instanceof HTTPException) {
 		return next();
 	}

@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev": "cf dev",
 		"build": "cf build",
-		"preview": "$npm_execpath run build && vite preview",
 		"cf-typegen": "cf workers types",
 		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",

@@ -29,13 +29,6 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"**",
-			"!.claude",
-			"!.cloudflare",
-			"!.wrangler",
-			"!dist",
-			"!node_modules"
-		]
+		"includes": ["**", "!.claude", "!.cloudflare", "!node_modules"]
 	}
 }
