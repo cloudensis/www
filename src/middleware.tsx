@@ -13,8 +13,8 @@ export const securityHeaders = secureHeaders({
 	contentSecurityPolicy: {
 		defaultSrc: ["'self'"],
 		scriptSrc: ["'self'"],
-		// Tailwind の開発時インジェクション
-		styleSrc: ["'self'", "'unsafe-inline'"],
+		// 開発時は Vite がスタイルをインラインで注入するため unsafe-inline を許可する
+		styleSrc: import.meta.env.DEV ? ["'self'", "'unsafe-inline'"] : ["'self'"],
 		imgSrc: ["'self'", "data:"],
 		fontSrc: ["'self'"],
 		connectSrc: ["'self'"],
