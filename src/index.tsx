@@ -18,8 +18,8 @@ app.notFound((c) => {
 	);
 });
 
-app.onError(async (c) => {
-	console.error("Unhandled error", c.error);
+app.onError(async (error, c) => {
+	console.error("Unhandled error", error);
 	c.status(500);
 	return c.render(
 		<ErrorTemplate
