@@ -16,7 +16,7 @@
 		"hono": "^4.13.13"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.15",
+		"@biomejs/biome": "^2.6.2",
 		"@cloudflare/vite-plugin": "2.0.0-beta.v.3",
 		"@hono/vite-ssg": "^0.3.3",
 		"@tailwindcss/vite": "^4.3.3",
