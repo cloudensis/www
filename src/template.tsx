@@ -6,7 +6,7 @@ export function HomeTemplate() {
 	return (
 		<div class="mx-auto max-w-5xl space-y-20 px-4 py-12 lg:px-8">
 			<div>
-				<h1 class="font-medium text-xl leading-normal lg:text-4xl">
+				<h1 class="text-xl leading-normal font-medium lg:text-4xl">
 					よりシンプルで
 					<br />
 					より価値を生むソフトウェア
@@ -63,7 +63,7 @@ function Section({
 }) {
 	return (
 		<section id={id}>
-			<h2 class="mb-4 font-medium text-xl">{title}</h2>
+			<h2 class="mb-4 text-xl font-medium">{title}</h2>
 			{children}
 		</section>
 	);
@@ -78,7 +78,7 @@ export function ErrorTemplate({
 }) {
 	return (
 		<div class="mx-auto max-w-5xl space-y-6 px-4 py-12 lg:px-8">
-			<h1 class="font-medium text-2xl">{title}</h1>
+			<h1 class="text-2xl font-medium">{title}</h1>
 			<p>{message}</p>
 			<LinkButton href="/">トップページへ戻る</LinkButton>
 		</div>
