@@ -25,10 +25,9 @@ jobs:
 
       - run: npm ci
 
-      # cf のビルドは dist/ssg を publicDir として取り込むため、先に SSG を出力しておく
-      - run: npm run build:ssg
+      - run: npm run build
 
-      - run: npx cf deploy
+      - run: npx cf deploy --prebuilt
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -1,6 +1,6 @@
 import { LinkButton } from "@cloudensis/design-system/components/button";
 import type { Child } from "hono/jsx";
-import { company, services } from "./const";
+import { company, services } from "../const";
 
 export function HomeTemplate() {
 	return (
