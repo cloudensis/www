@@ -17,10 +17,10 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.6.2",
-		"@cloudflare/vite-plugin": "2.0.0-beta.v.3",
+		"@cloudflare/vite-plugin": "2.0.0-beta.v.10",
 		"@hono/vite-ssg": "^0.3.3",
 		"@tailwindcss/vite": "^4.3.3",
-		"cf": "1.0.0-beta.20",
+		"cf": "1.0.0-beta.27",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.5",
