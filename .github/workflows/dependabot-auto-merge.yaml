@@ -13,8 +13,18 @@ jobs:
     steps:
       - id: metadata
         uses: dependabot/fetch-metadata@v3
-      # major は手動でレビューする
-      - if: steps.metadata.outputs.update-type != 'version-update:semver-major'
+
+      # プレリリース版（1.0.0-rc.1 など）は minor / patch でも破壊的変更が入りうるため手動でレビューする。
+      # グループ更新でも判定できるよう、更新対象すべての前後のバージョンを確認する。
+      - id: prerelease
+        run: |
+          echo "found=$(jq -r 'any(.[]; ((.prevVersion // "") + (.newVersion // "")) | contains("-"))' <<< "$UPDATED_DEPENDENCIES")" >> "$GITHUB_OUTPUT"
+        env:
+          UPDATED_DEPENDENCIES: ${{ steps.metadata.outputs.updated-dependencies-json }}
+
+      # major は手動でレビューする。
+      # --auto は main のブランチ保護で test ジョブが必須チェックになっている前提で、テストの成功を待ってマージする。
+      - if: steps.metadata.outputs.update-type != 'version-update:semver-major' && steps.prerelease.outputs.found == 'false'
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
