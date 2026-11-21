@@ -6,9 +6,11 @@
 		"dev": "cf dev",
 		"build": "npm run build:ssg && cf build",
 		"build:ssg": "vite build --mode ssg",
+		"preview": "npm run build && vite preview",
 		"cf-typegen": "cf workers types",
 		"typecheck": "cf workers types && tsc --noEmit",
 		"lint": "biome check",
+		"test": "vitest run",
 		"format": "biome check --write --unsafe"
 	},
 	"dependencies": {
@@ -24,6 +26,7 @@
 		"tailwindcss": "^4.3.5",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.8",
-		"vite-ssr-components": "^0.9.0"
+		"vite-ssr-components": "^0.9.0",
+		"vitest": "^5.1.1"
 	}
 }
