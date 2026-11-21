@@ -25,44 +25,69 @@ export const securityHeaders = secureHeaders({
 	},
 });
 
-export const renderer = jsxRenderer(({ children }) => {
-	const ogImageUrl = new URL("/ogp.png", site.url).toString();
+/** ページごとに c.render の第 2 引数で渡すメタ情報 */
+export type PageMeta = {
+	/** ページ名。省略するとトップページの title（site.title）になる */
+	title?: string;
+	/** 省略すると site.description になる */
+	description?: string;
+	/** canonical / og:url に使うパス。エラーページなど URL が一意でないページでは省略する */
+	path?: string;
+	/** 検索エンジンにインデックスさせない（エラーページなど） */
+	noindex?: boolean;
+};
 
-	return (
-		<html lang="ja">
-			<head>
-				<meta charset="UTF-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>{site.name}</title>
-				<meta name="description" content={site.description} />
-				<link rel="canonical" href={site.url} />
+export const renderer = jsxRenderer(
+	({ children, title, description = site.description, path, noindex }) => {
+		const pageTitle = title ? `${title} | ${company.name}` : site.title;
+		const canonicalUrl = path ? new URL(path, site.url).toString() : undefined;
+		const ogImageUrl = new URL("/ogp.png", site.url).toString();
 
-				<meta property="og:type" content="website" />
-				<meta property="og:site_name" content={site.name} />
-				<meta property="og:title" content={site.name} />
-				<meta property="og:description" content={site.description} />
-				<meta property="og:url" content={site.url} />
-				<meta property="og:image" content={ogImageUrl} />
-				<meta property="og:locale" content="ja_JP" />
-				<meta name="twitter:card" content="summary_large_image" />
+		return (
+			<html lang="ja">
+				<head>
+					<meta charset="UTF-8" />
+					<meta
+						name="viewport"
+						content="width=device-width, initial-scale=1.0"
+					/>
+					<title>{pageTitle}</title>
+					<meta name="description" content={description} />
+					{noindex && <meta name="robots" content="noindex" />}
+					{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
-				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-				<link rel="apple-touch-icon" href="/logo.png" />
+					<meta property="og:type" content="website" />
+					<meta property="og:site_name" content={site.name} />
+					<meta property="og:title" content={pageTitle} />
+					<meta property="og:description" content={description} />
+					{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+					<meta property="og:image" content={ogImageUrl} />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+					<meta property="og:image:alt" content={`${site.name} のロゴ`} />
+					<meta property="og:locale" content="ja_JP" />
+					<meta name="twitter:card" content="summary_large_image" />
 
-				<ViteClient />
-				<link
-					href={import.meta.env.DEV ? "/src/global.css" : "/assets/global.css"}
-					rel="stylesheet"
-				/>
-			</head>
-			<body class="flex min-h-svh flex-col">
-				<Header />
-				<main class="flex-1">{children}</main>
-				<Footer />
-			</body>
-		</html>
-	);
-});
+					<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+					<link rel="apple-touch-icon" href="/logo.png" />
+
+					<ViteClient />
+					<link
+						href={
+							import.meta.env.DEV ? "/src/global.css" : "/assets/global.css"
+						}
+						rel="stylesheet"
+					/>
+				</head>
+				<body class="flex min-h-svh flex-col">
+					<Header />
+					<main class="flex-1">{children}</main>
+					<Footer />
+				</body>
+			</html>
+		);
+	},
+);
 
 function Header() {
 	return (

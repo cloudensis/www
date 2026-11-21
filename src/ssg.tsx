@@ -10,6 +10,6 @@ const ssg = new Hono();
 
 ssg.use(renderer);
 
-ssg.get("/", (c) => c.render(<HomeTemplate />));
+ssg.get("/", (c) => c.render(<HomeTemplate />, { path: "/" }));
 
 export default ssg;
