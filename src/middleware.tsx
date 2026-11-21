@@ -1,28 +1,21 @@
 import { LogoLockup } from "@cloudensis/design-system/brand/cloudensis/logo-lockup";
+import { createMiddleware } from "hono/factory";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { secureHeaders } from "hono/secure-headers";
 import { ViteClient } from "vite-ssr-components/hono";
 import { company, site } from "./const";
+import { getSecurityHeaders } from "./security-headers";
 
 /**
- * 全レスポンスにセキュリティヘッダーを付与する。
- * Content-Security-Policy 以外（HSTS や X-Content-Type-Options など）は
- * secureHeaders の既定値をそのまま利用する。
+ * Worker が返すレスポンスにセキュリティヘッダーを付与する。
+ * 静的アセットには、同じ定義から生成した _headers で付与する（src/security-headers.ts）。
  */
-export const securityHeaders = secureHeaders({
-	contentSecurityPolicy: {
-		defaultSrc: ["'self'"],
-		scriptSrc: ["'self'"],
-		// 開発時は Vite がスタイルをインラインで注入するため unsafe-inline を許可する
-		styleSrc: import.meta.env.DEV ? ["'self'", "'unsafe-inline'"] : ["'self'"],
-		imgSrc: ["'self'", "data:"],
-		fontSrc: ["'self'"],
-		connectSrc: ["'self'"],
-		objectSrc: ["'none'"],
-		baseUri: ["'self'"],
-		formAction: ["'self'"],
-		frameAncestors: ["'none'"],
-	},
+export const securityHeaders = createMiddleware(async (c, next) => {
+	await next();
+	for (const [name, value] of Object.entries(
+		getSecurityHeaders({ dev: import.meta.env.DEV }),
+	)) {
+		c.res.headers.set(name, value);
+	}
 });
 
 export const renderer = jsxRenderer(({ children }) => {
