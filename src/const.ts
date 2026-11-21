@@ -1,13 +1,21 @@
 export const company = {
 	name: "Cloudensis合同会社",
 	postalCode: "980-0021",
-	address: "宮城県仙台市青葉区中央2-11-19 仙南ビル4階 -A",
+	address: {
+		region: "宮城県",
+		locality: "仙台市青葉区",
+		street: "中央2-11-19 仙南ビル4階 -A",
+	},
 	establishedOn: new Date("2026-04-01"),
+	sameAs: ["https://github.com/cloudensis/", "https://x.com/cloudensis/"],
 } as const;
 
 export const site = {
 	name: "cloudensis",
 	url: "https://cloudensis.com/",
+	/** トップページの title。下層ページは「ページ名 | 会社名」になる。 */
+	title:
+		"Cloudensis合同会社 | ソフトウェア開発支援・技術教育・自社プロダクト開発",
 	description:
 		"cloudensisは、ソフトウェア開発支援、技術教育、自社プロダクト開発を行うソフトウェア企業です。",
 } as const;

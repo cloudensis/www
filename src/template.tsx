@@ -1,10 +1,11 @@
 import { LinkButton } from "@cloudensis/design-system/components/button";
 import type { Child } from "hono/jsx";
-import { company, services } from "./const";
+import { company, services, site } from "./const";
 
 export function HomeTemplate() {
 	return (
 		<div class="mx-auto max-w-5xl space-y-20 px-4 py-12 lg:px-8">
+			<OrganizationJsonLd />
 			<div>
 				<h1 class="text-xl leading-normal font-medium lg:text-4xl">
 					よりシンプルで
@@ -44,7 +45,11 @@ export function HomeTemplate() {
 					<dt>本社所在地</dt>
 					<dd>
 						<p>〒{company.postalCode}</p>
-						<p>{company.address}</p>
+						<p>
+							{company.address.region}
+							{company.address.locality}
+							{company.address.street}
+						</p>
 					</dd>
 				</dl>
 			</Section>
@@ -82,5 +87,41 @@ export function ErrorTemplate({
 			<p>{message}</p>
 			<LinkButton href="/">トップページへ戻る</LinkButton>
 		</div>
+	);
+}
+
+/**
+ * 検索エンジン向けの構造化データ（schema.org の Organization）。
+ * 会社概要と同じ company 定数から生成し、表示内容と食い違わないようにする。
+ * type="application/ld+json" は実行されるスクリプトではないため、CSP の script-src の対象外。
+ */
+function OrganizationJsonLd() {
+	const data = {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		name: company.name,
+		url: site.url,
+		logo: new URL("/logo.png", site.url).toString(),
+		description: site.description,
+		foundingDate: company.establishedOn.toISOString().slice(0, 10),
+		address: {
+			"@type": "PostalAddress",
+			postalCode: company.postalCode,
+			addressCountry: "JP",
+			addressRegion: company.address.region,
+			addressLocality: company.address.locality,
+			streetAddress: company.address.street,
+		},
+		sameAs: company.sameAs,
+	};
+
+	return (
+		<script
+			type="application/ld+json"
+			// "</script>" で要素が閉じられないよう、"<" をエスケープする
+			dangerouslySetInnerHTML={{
+				__html: JSON.stringify(data).replace(/</g, "\\u003c"),
+			}}
+		/>
 	);
 }

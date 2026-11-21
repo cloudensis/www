@@ -19,6 +19,7 @@ app.notFound((c) => {
 			title="ページが見つかりません"
 			message="お探しのページは移動または削除された可能性があります。URLをご確認ください。"
 		/>,
+		{ title: "ページが見つかりません", noindex: true },
 	);
 });
 
@@ -30,6 +31,7 @@ app.onError(async (error, c) => {
 			title="エラーが発生しました"
 			message="申し訳ありません。処理中に問題が発生しました。時間をおいて、再度お試しください。"
 		/>,
+		{ title: "エラーが発生しました", noindex: true },
 	);
 });
 
