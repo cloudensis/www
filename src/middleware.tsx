@@ -51,7 +51,7 @@ export const renderer = jsxRenderer(({ children }) => {
 
 				<ViteClient />
 				<link
-					href={import.meta.env.DEV ? "/src/global.css" : "/assets/global.css"}
+					href={import.meta.env.VITE_GLOBAL_CSS_HREF ?? "/src/global.css"}
 					rel="stylesheet"
 				/>
 			</head>
