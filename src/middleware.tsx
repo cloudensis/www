@@ -66,7 +66,7 @@ export const renderer = jsxRenderer(({ children }) => {
 
 function Header() {
 	return (
-		<header class="border-default bg-default sticky top-0 z-10 flex h-14 items-center border-b px-4 lg:px-6">
+		<header class="sticky top-0 z-10 flex h-14 items-center border-b border-(--border-color-default) bg-(--background-color-default) px-4 lg:px-6">
 			<LogoLockup class="text-lg" />
 		</header>
 	);
