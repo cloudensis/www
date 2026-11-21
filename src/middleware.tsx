@@ -56,8 +56,16 @@ export const renderer = jsxRenderer(({ children }) => {
 				/>
 			</head>
 			<body class="flex min-h-svh flex-col">
+				<a
+					href="#main"
+					class="sr-only z-20 bg-(--background-color-default) px-4 py-2 underline focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:border focus:border-(--border-color-default)"
+				>
+					本文へスキップ
+				</a>
 				<Header />
-				<main class="flex-1">{children}</main>
+				<main id="main" class="flex-1">
+					{children}
+				</main>
 				<Footer />
 			</body>
 		</html>
@@ -67,7 +75,9 @@ export const renderer = jsxRenderer(({ children }) => {
 function Header() {
 	return (
 		<header class="sticky top-0 z-10 flex h-14 items-center border-b border-(--border-color-default) bg-(--background-color-default) px-4 lg:px-6">
-			<LogoLockup class="text-lg" />
+			<a href="/">
+				<LogoLockup class="text-lg" />
+			</a>
 		</header>
 	);
 }
@@ -78,24 +88,43 @@ function Footer() {
 			<span>
 				&copy; {new Date().getFullYear()} {company.name}
 			</span>
-			<nav class="flex flex-wrap gap-x-4 gap-y-2">
-				<a
-					href="https://github.com/cloudensis/"
-					class="underline"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
+			<nav
+				aria-label="ソーシャルメディア"
+				class="flex flex-wrap gap-x-4 gap-y-2"
+			>
+				<ExternalLink href="https://github.com/cloudensis/">
 					GitHub
-				</a>
-				<a
-					href="https://x.com/cloudensis/"
-					class="underline"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					X
-				</a>
+				</ExternalLink>
+				<ExternalLink href="https://x.com/cloudensis/">X</ExternalLink>
 			</nav>
 		</footer>
+	);
+}
+
+/** 新しいタブで開く外部リンク。そのことを視覚的にもスクリーンリーダーにも伝える。 */
+function ExternalLink({ href, children }: { href: string; children: string }) {
+	return (
+		<a
+			href={href}
+			class="inline-flex items-center gap-1 underline"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			{children}
+			<svg
+				aria-hidden="true"
+				viewBox="0 0 16 16"
+				width="12"
+				height="12"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path d="M9 2h5v5M14 2 7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" />
+			</svg>
+			<span class="sr-only">（新しいタブで開きます）</span>
+		</a>
 	);
 }

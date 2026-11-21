@@ -11,7 +11,7 @@ export function HomeTemplate() {
 					<br />
 					より価値を生むソフトウェア
 				</h1>
-				<p class="my-6 max-w-2xl text-sm leading-normal">
+				<p class="my-6 max-w-2xl leading-relaxed">
 					AIによって、ソフトウェアは誰でも作れるようになりました。
 					いま、エンジニアの仕事は「何を作るか」ではなく「何を作らないか」を決めることです。
 					よりシンプルで保守しやすく、事業価値を生み続ける実装は何か。
