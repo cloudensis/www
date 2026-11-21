@@ -1,13 +1,29 @@
 import { cloudflare } from "@cloudflare/vite-plugin";
 import ssg from "@hono/vite-ssg";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import ssrPlugin from "vite-ssr-components/plugin";
+import { getSecurityHeaders, toHeadersFile } from "./src/security-headers";
+
+/** 静的アセット用の _headers を src/security-headers.ts の定義から生成する */
+function headersFile(): Plugin {
+	return {
+		name: "headers-file",
+		apply: "build",
+		generateBundle() {
+			this.emitFile({
+				type: "asset",
+				fileName: "_headers",
+				source: toHeadersFile(getSecurityHeaders()),
+			});
+		},
+	};
+}
 
 export default defineConfig(({ mode, command }) => {
 	if (mode === "ssg") {
 		return {
-			plugins: [tailwindcss(), ssg({ entry: "./src/ssg.tsx" })],
+			plugins: [tailwindcss(), ssg({ entry: "./src/ssg.tsx" }), headersFile()],
 			// SSG の描画でも import.meta.env が効くよう Vite で変換する（ViteClient を出力しないため）
 			resolve: { noExternal: ["vite-ssr-components"] },
 			build: {
