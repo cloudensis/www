@@ -75,8 +75,12 @@ function Header() {
 function Footer() {
 	return (
 		<footer class="flex flex-wrap items-center justify-between gap-4 px-4 py-8 text-sm lg:px-8">
+			{/*
+			 * トップページは SSG で静的に書き出すため、現在の年を出すとビルドした年で固定されてしまう。
+			 * 設立年を固定で表示し、年をまたいでも再ビルドを不要にする。
+			 */}
 			<span>
-				&copy; {new Date().getFullYear()} {company.name}
+				&copy; {company.establishedOn.getUTCFullYear()} {company.name}
 			</span>
 			<nav class="flex flex-wrap gap-x-4 gap-y-2">
 				<a
