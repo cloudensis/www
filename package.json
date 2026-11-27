@@ -20,7 +20,7 @@
 		"@cloudflare/vite-plugin": "2.0.0-rc.1",
 		"@hono/vite-ssg": "^0.3.3",
 		"@tailwindcss/vite": "^4.3.5",
-		"cf": "1.0.0-rc.1",
+		"cf": "1.0.0-rc.4",
 		"tailwindcss": "^4.3.5",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.8",
